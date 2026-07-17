@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
@@ -43,12 +43,93 @@
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-item"><a href="#">Computer Science</a></li>
-            <li class="dropdown-item"><a href="#">Data Science & AI</a></li>
-            <li class="dropdown-item"><a href="#">Web Development</a></li>
-            <li class="dropdown-item"><a href="#">Business & Marketing</a></li>
-          </ul>
+          <div class="megamenu-panel">
+            <div class="megamenu-header">
+              <span class="megamenu-title">Explore Courses</span>
+              <a href="#" class="megamenu-viewall">
+                View All
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+            
+            <div class="megamenu-grid">
+              <!-- Left Column (Leadership & Personal Development) -->
+              <div class="megamenu-column-group">
+                <!-- Leadership -->
+                <div class="megamenu-column">
+                  <div class="megamenu-heading-wrapper">
+                    <div class="megamenu-icon-box blue">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"></path><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
+                    </div>
+                    <h4 class="megamenu-heading">Leadership</h4>
+                  </div>
+                  <ul class="megamenu-list">
+                    <li><a href="#">Leadership Development</a></li>
+                    <li><a href="#">Executive Coaching</a></li>
+                    <li><a href="#">Team Management</a></li>
+                  </ul>
+                </div>
+                
+                <!-- Personal Development -->
+                <div class="megamenu-column">
+                  <div class="megamenu-heading-wrapper">
+                    <div class="megamenu-icon-box orange">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h4 class="megamenu-heading">Personal Development</h4>
+                  </div>
+                  <ul class="megamenu-list">
+                    <li><a href="#">Personality Development</a></li>
+                    <li><a href="#">Personal Growth</a></li>
+                    <li><a href="#">Self-Development</a></li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Right Column (Communication & Corporate Skills) -->
+              <div class="megamenu-column-group">
+                <!-- Communication -->
+                <div class="megamenu-column">
+                  <div class="megamenu-heading-wrapper">
+                    <div class="megamenu-icon-box green">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    </div>
+                    <h4 class="megamenu-heading">Communication</h4>
+                  </div>
+                  <ul class="megamenu-list">
+                    <li><a href="#">Business Communication</a></li>
+                    <li><a href="#">Public Speaking</a></li>
+                    <li><a href="#">Presentation Skills</a></li>
+                  </ul>
+                </div>
+                
+                <!-- Corporate Skills -->
+                <div class="megamenu-column">
+                  <div class="megamenu-heading-wrapper">
+                    <div class="megamenu-icon-box purple">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                    </div>
+                    <h4 class="megamenu-heading">Corporate Skills</h4>
+                  </div>
+                  <ul class="megamenu-list">
+                    <li><a href="#">Corporate Training</a></li>
+                    <li><a href="#">Soft Skills</a></li>
+                    <li><a href="#">Professional Development</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="megamenu-footer">
+              <span class="footer-dot-indicator"></span>
+              <span class="footer-label">Popular:</span>
+              <div class="footer-tags">
+                <a href="#" class="footer-tag">Leadership</a>
+                <a href="#" class="footer-tag">Communication</a>
+                <a href="#" class="footer-tag">Personality</a>
+              </div>
+            </div>
+          </div>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">Live Classes</a>
@@ -89,13 +170,32 @@
     </nav>
   </header>
 
-  <!-- Hero Content Area -->
-  <main class="hero">
-    <h1>Empower Your Learning Journey</h1>
-    <p>Access high-quality courses, live interactive classes, and insightful articles designed to integrate talent, thought, and action.</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn btn-primary btn-lg">Explore Courses</a>
-      <a href="#" class="btn btn-outline btn-lg">Learn More</a>
+  <!-- Hero Video Banner Section -->
+  <main class="hero video-hero" id="hero-banner">
+    <!-- Video Element -->
+    <video autoplay loop muted playsinline class="hero-video" id="bg-video">
+      <source src="{% static 'banner_video.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    
+    <!-- Dark overlay for readability -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Text Content -->
+    <div class="hero-content">
+      <span class="hero-overline">Integrating talent, thought and action</span>
+      <h1 class="hero-title">Empower Your Learning Journey</h1>
+      <p class="hero-description">Access high-quality courses, live interactive classes, and insightful projects designed to build cutting-edge skills and launch global careers.</p>
+      <div class="hero-action-buttons">
+        <a href="#" class="btn btn-explore">
+          Explore Courses
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="#" class="btn btn-about">Learn More</a>
+      </div>
     </div>
   </main>
 
@@ -152,6 +252,35 @@
         dropdownItem.classList.toggle('active');
       }
     });
+
+    // Hover to play audio logic for background banner video
+    const heroBanner = document.getElementById('hero-banner');
+    const bgVideo = document.getElementById('bg-video');
+
+    if (heroBanner && bgVideo) {
+      // Unmute on hover
+      heroBanner.addEventListener('mouseenter', () => {
+        bgVideo.muted = false;
+        
+        // Browsers block audio playback unless the user has clicked on the document first.
+        // If unmuting triggers a browser block, it can pause the video. We handle this
+        // by calling play() and catching the block, immediately reverting to muted to
+        // keep the video playing smoothly.
+        const playPromise = bgVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Audio unmute blocked by browser policy. Keeping video playing in muted state.");
+            bgVideo.muted = true; // Revert to muted
+            bgVideo.play();       // Resume video playback
+          });
+        }
+      });
+      
+      // Mute on leave
+      heroBanner.addEventListener('mouseleave', () => {
+        bgVideo.muted = true;
+      });
+    }
   </script>
 </body>
 </html>
