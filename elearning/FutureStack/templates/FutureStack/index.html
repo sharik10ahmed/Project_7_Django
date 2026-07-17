@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureStack</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+  <!-- Premium Header -->
+  <header class="header" id="header">
+    <nav class="navbar">
+      
+      <!-- Brand & Logo -->
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-title">FutureStack</span>
+          <span class="brand-subtitle">Integrating talent, thought and action.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link" id="courses-dropdown-toggle">
+            Courses
+            <!-- Dropdown Arrow Icon -->
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="#">Computer Science</a></li>
+            <li class="dropdown-item"><a href="#">Data Science & AI</a></li>
+            <li class="dropdown-item"><a href="#">Web Development</a></li>
+            <li class="dropdown-item"><a href="#">Business & Marketing</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Live Classes</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Articles</a>
+        </li>
+      </ul>
+
+      <!-- Search Bar -->
+      <div class="search-container" id="search-container">
+        <span class="search-icon">
+          <!-- Magnifying Glass Icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="text" class="search-input" placeholder="Search for courses, articles, skills...">
+      </div>
+
+      <!-- Auth Actions -->
+      <div class="nav-actions" id="nav-actions">
+        <a href="{% url 'login' %}" class="btn btn-link">Sign In</a>
+        <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+        <!-- Hamburger Menu Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12" id="line1"></line>
+          <line x1="3" y1="6" x2="21" y2="6" id="line2"></line>
+          <line x1="3" y1="18" x2="21" y2="18" id="line3"></line>
+        </svg>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- Hero Content Area -->
+  <main class="hero">
+    <h1>Empower Your Learning Journey</h1>
+    <p>Access high-quality courses, live interactive classes, and insightful articles designed to integrate talent, thought, and action.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary btn-lg">Explore Courses</a>
+      <a href="#" class="btn btn-outline btn-lg">Learn More</a>
+    </div>
+  </main>
+
+  <!-- Javascript for Interactivity -->
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const searchContainer = document.getElementById('search-container');
+    const navActions = document.getElementById('nav-actions');
+
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      searchContainer.classList.toggle('active');
+      navActions.classList.toggle('active');
+      
+      // Icon transformation
+      const isExpanded = navMenu.classList.contains('active');
+      if (isExpanded) {
+        mobileToggle.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        `;
+      } else {
+        mobileToggle.innerHTML = `
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        `;
+      }
+    });
+
+    // Mobile Dropdown Toggle
+    const dropdownToggle = document.getElementById('courses-dropdown-toggle');
+    const dropdownItem = dropdownToggle.parentElement;
+    
+    dropdownToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        dropdownItem.classList.toggle('active');
+      }
+    });
+  </script>
+</body>
+</html>
