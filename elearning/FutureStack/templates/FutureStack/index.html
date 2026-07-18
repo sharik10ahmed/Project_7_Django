@@ -10,7 +10,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="{% static 'style.css' %}?v=1.18">
+  <!-- Favicon for all devices -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
 </head>
 <body>
 
@@ -53,70 +59,64 @@
             </div>
             
             <div class="megamenu-grid">
-              <!-- Left Column (Leadership & Personal Development) -->
-              <div class="megamenu-column-group">
-                <!-- Leadership -->
-                <div class="megamenu-column">
-                  <div class="megamenu-heading-wrapper">
-                    <div class="megamenu-icon-box blue">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"></path><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
-                    </div>
-                    <h4 class="megamenu-heading">Leadership</h4>
+              <!-- Leadership -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box blue">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"></path><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
                   </div>
-                  <ul class="megamenu-list">
-                    <li><a href="#">Leadership Development</a></li>
-                    <li><a href="#">Executive Coaching</a></li>
-                    <li><a href="#">Team Management</a></li>
-                  </ul>
+                  <h4 class="megamenu-heading">Leadership</h4>
                 </div>
-                
-                <!-- Personal Development -->
-                <div class="megamenu-column">
-                  <div class="megamenu-heading-wrapper">
-                    <div class="megamenu-icon-box orange">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    </div>
-                    <h4 class="megamenu-heading">Personal Development</h4>
-                  </div>
-                  <ul class="megamenu-list">
-                    <li><a href="#">Personality Development</a></li>
-                    <li><a href="#">Personal Growth</a></li>
-                    <li><a href="#">Self-Development</a></li>
-                  </ul>
-                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Leadership Development</a></li>
+                  <li><a href="#">Executive Coaching</a></li>
+                  <li><a href="#">Team Management</a></li>
+                </ul>
               </div>
               
-              <!-- Right Column (Communication & Corporate Skills) -->
-              <div class="megamenu-column-group">
-                <!-- Communication -->
-                <div class="megamenu-column">
-                  <div class="megamenu-heading-wrapper">
-                    <div class="megamenu-icon-box green">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-                    </div>
-                    <h4 class="megamenu-heading">Communication</h4>
+              <!-- Personal Development -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box orange">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                   </div>
-                  <ul class="megamenu-list">
-                    <li><a href="#">Business Communication</a></li>
-                    <li><a href="#">Public Speaking</a></li>
-                    <li><a href="#">Presentation Skills</a></li>
-                  </ul>
+                  <h4 class="megamenu-heading">Personal Development</h4>
                 </div>
-                
-                <!-- Corporate Skills -->
-                <div class="megamenu-column">
-                  <div class="megamenu-heading-wrapper">
-                    <div class="megamenu-icon-box purple">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
-                    </div>
-                    <h4 class="megamenu-heading">Corporate Skills</h4>
+                <ul class="megamenu-list">
+                  <li><a href="#">Personality Development</a></li>
+                  <li><a href="#">Personal Growth</a></li>
+                  <li><a href="#">Self-Development</a></li>
+                </ul>
+              </div>
+              
+              <!-- Communication -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box green">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                   </div>
-                  <ul class="megamenu-list">
-                    <li><a href="#">Corporate Training</a></li>
-                    <li><a href="#">Soft Skills</a></li>
-                    <li><a href="#">Professional Development</a></li>
-                  </ul>
+                  <h4 class="megamenu-heading">Communication</h4>
                 </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Business Communication</a></li>
+                  <li><a href="#">Public Speaking</a></li>
+                  <li><a href="#">Presentation Skills</a></li>
+                </ul>
+              </div>
+              
+              <!-- Corporate Skills -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box purple">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Corporate Skills</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Corporate Training</a></li>
+                  <li><a href="#">Soft Skills</a></li>
+                  <li><a href="#">Professional Development</a></li>
+                </ul>
               </div>
             </div>
             
@@ -199,6 +199,896 @@
     </div>
   </main>
 
+  <!-- Featured Press Section -->
+  <section class="press-feature-section" id="press-feature">
+    <div class="press-container">
+      
+      <!-- Left side: Badge & Rating -->
+      <div class="press-badge-card">
+        <div class="press-badge-pill">
+          <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          SiliconIndia
+        </div>
+        <div class="press-stars">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+        <div class="press-badge-label">June 2021 - Cover Feature</div>
+      </div>
+
+      <!-- Center: Main Quote & Info -->
+      <div class="press-content-wrapper">
+        <span class="press-overline">Featured in SiliconIndia Magazine – June 2021</span>
+        <blockquote class="press-quote">
+          "Striving to guide people and organizations to succeed in their roles and accomplish objectives and long-term life goals."
+        </blockquote>
+        <div class="press-sub-info">
+          <span class="press-recognition">Recognized among the <strong class="highlight">10 Most Promising Workforce Development Companies – 2021</strong></span>
+          <cite class="press-author">— Lt Col Shreesh Kumar (Retd), Founder & CEO</cite>
+        </div>
+      </div>
+
+      <!-- Right: Action Button -->
+      <div class="press-action-wrapper">
+        <a href="https://www.siliconindia.com/" target="_blank" rel="noopener noreferrer" class="btn btn-press-feature">
+          <span>Read Full Feature</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stats & Recognition Section -->
+  <section class="stats-section" id="stats-section">
+    <div class="stats-container">
+      
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <!-- Stat Item 1 -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+              <path d="M6 6h10M6 10h10"></path>
+            </svg>
+          </div>
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Courses</div>
+        </div>
+
+        <!-- Stat Item 2 -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="stat-number">4,000+</div>
+          <div class="stat-label">Students Trained</div>
+        </div>
+
+        <!-- Stat Item 3 -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
+              <path d="M12 2a7 7 0 0 0-7 7v5h14V9a7 7 0 0 0-7-7z"></path>
+            </svg>
+          </div>
+          <div class="stat-number">2,500+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+
+        <!-- Stat Item 4 -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"></path>
+            </svg>
+          </div>
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Live Sessions</div>
+        </div>
+      </div>
+
+      <!-- Recognition Footer Row -->
+      <div class="recognition-row">
+        <span class="recognition-title">Recognised By</span>
+        <div class="recognition-pill">
+          <svg class="recognition-award-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="7"></circle>
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+          </svg>
+          <span class="recognition-text">Top 10 Workforce Development Companies — SiliconIndia Magazine, June 2021</span>
+          <a href="https://www.siliconindia.com/" target="_blank" rel="noopener noreferrer" class="recognition-link">
+            View Feature
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About the Institute Section -->
+  <section class="about-institute-section" id="about-institute">
+    <div class="about-container">
+      
+      <!-- Left Column: Narrative Content -->
+      <div class="about-narrative">
+        <span class="about-overline">About the Institute</span>
+        <h2 class="about-title">Integrating Talent, Thought, and Action</h2>
+        <div class="about-text-content">
+          <p>
+            At <strong>FutureStack</strong>, we strive to nurture and shape aspirants' talents and personalities. We are committed to offering tailor-made solutions to our clients by carefully analyzing their specific business needs and domain challenges.
+          </p>
+          <p>
+            We deliver customized training and management development programs designed for corporates, government bodies, private organizations, and academic institutions. Our panel of qualified professionals and industry experts works tirelessly to deliver solutions that satisfy and delight.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Core Services Grid -->
+      <div class="about-services-grid">
+        
+        <!-- Service Card 1 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Corporate Training</h3>
+            <p class="service-description">Customized management and soft skills programs for corporate and government institutions.</p>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Consultancy & Quality</h3>
+            <p class="service-description">Strategic consultancy in project management, system optimization, and standards like ISO alignment.</p>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="service-card">
+          <div class="service-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Academic Mentorship</h3>
+            <p class="service-description">Hands-on guidance and research support for final year MBA, engineering, and professional students.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Courses Section -->
+  <section class="courses-section" id="featured-courses">
+    <div class="courses-container">
+      
+      <div class="courses-header">
+        <span class="courses-overline">Our Programs</span>
+        <h2 class="courses-title">Featured Courses</h2>
+      </div>
+
+      <!-- Courses Grid -->
+      <div class="courses-grid">
+        
+        <!-- Course Card 1 -->
+        <div class="course-card glass-card">
+          <div class="course-img-container">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Leadership Mastery" class="course-img">
+            <span class="course-category-badge">Leadership</span>
+          </div>
+          <div class="course-content">
+            <span class="course-tag">Leadership and Personal Development</span>
+            <h3 class="course-card-title">Leadership Mastery for Young Professionals</h3>
+            <p class="course-description">Learn how to become a confident leader, make smart decisions, and manage diverse teams effectively.</p>
+            <div class="course-meta">
+              <span class="course-duration">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                6 Weeks
+              </span>
+              <span class="course-rating">
+                <span class="star-icon">★</span>
+                4.5
+              </span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">₹10,000</span>
+              <a href="#" class="btn-enroll-glass">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Card 2 -->
+        <div class="course-card glass-card">
+          <div class="course-img-container">
+            <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=600&q=80" alt="Personal Growth" class="course-img">
+            <span class="course-category-badge">Growth</span>
+          </div>
+          <div class="course-content">
+            <span class="course-tag">Communication & Corporate Training</span>
+            <h3 class="course-card-title">Personal Growth & Self-Development Bootcamp</h3>
+            <p class="course-description">Improve your mindset, develop positive daily habits, and build the discipline required to achieve long-term goals.</p>
+            <div class="course-meta">
+              <span class="course-duration">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                4 Weeks
+              </span>
+              <span class="course-rating">
+                <span class="star-icon">★</span>
+                4.5
+              </span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">₹3,999</span>
+              <a href="#" class="btn-enroll-glass">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Card 3 -->
+        <div class="course-card glass-card">
+          <div class="course-img-container">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Personality Development" class="course-img">
+            <span class="course-category-badge">Personality</span>
+          </div>
+          <div class="course-content">
+            <span class="course-tag">Leadership and Personal Development</span>
+            <h3 class="course-card-title">Personality Development</h3>
+            <p class="course-description">Enhance your emotional intelligence, master body language, and build confidence to leave a lasting positive impression.</p>
+            <div class="course-meta">
+              <span class="course-duration">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                8 Weeks
+              </span>
+              <span class="course-rating">
+                <span class="star-icon">★</span>
+                4.5
+              </span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">₹5,000</span>
+              <a href="#" class="btn-enroll-glass">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Card 4 -->
+        <div class="course-card glass-card">
+          <div class="course-img-container">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Career Development" class="course-img">
+            <span class="course-category-badge">Career</span>
+          </div>
+          <div class="course-content">
+            <span class="course-tag">Leadership and Personal Development</span>
+            <h3 class="course-card-title">Career Development & Personality Growth</h3>
+            <p class="course-description">Master goal setting, time management, interview prep, and corporate presentation skills to accelerate your career growth.</p>
+            <div class="course-meta">
+              <span class="course-duration">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                2 Months
+              </span>
+              <span class="course-rating">
+                <span class="star-icon">★</span>
+                4.5
+              </span>
+            </div>
+            <div class="course-footer">
+              <span class="course-price">₹15,000</span>
+              <a href="#" class="btn-enroll-glass">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Center Button -->
+      <div class="courses-action-row">
+        <a href="#" class="btn btn-view-courses glass-btn">
+          View All Courses
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Upcoming Live Classes Section -->
+  <section class="live-classes-section" id="upcoming-live">
+    <div class="live-container">
+      
+      <div class="live-header">
+        <span class="live-overline">Interactive Learning</span>
+        <h2 class="live-title">Upcoming Live Classes</h2>
+      </div>
+
+      <!-- Live Cards Grid (2 columns) -->
+      <div class="live-grid">
+        
+        <!-- Live Card 1 -->
+        <div class="live-card glass-light-card">
+          <div class="live-img-container">
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Time Management Masterclass" class="live-img">
+            <span class="live-badge">
+              <span class="live-dot"></span>
+              Live
+            </span>
+          </div>
+          <div class="live-content">
+            <h3 class="live-card-title">Time Management & Productivity Masterclass</h3>
+            
+            <div class="live-schedule">
+              <span class="schedule-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                May 1, 2026
+              </span>
+              <span class="schedule-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                03:00 PM
+              </span>
+            </div>
+            
+            <div class="live-footer">
+              <span class="live-instructor">With Dr. Rajesh Sen</span>
+              <a href="#" class="btn-register-live">Register Free</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Card 2 -->
+        <div class="live-card glass-light-card">
+          <div class="live-img-container">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Executive Communication Masterclass" class="live-img">
+            <span class="live-badge">
+              <span class="live-dot"></span>
+              Live
+            </span>
+          </div>
+          <div class="live-content">
+            <h3 class="live-card-title">Executive Communication & Leadership Presence Masterclass</h3>
+            
+            <div class="live-schedule">
+              <span class="schedule-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                May 7, 2026
+              </span>
+              <span class="schedule-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                10:00 AM
+              </span>
+            </div>
+            
+            <div class="live-footer">
+              <span class="live-instructor">With Prof. Shalini Verma</span>
+              <a href="#" class="btn-register-live">Register Free</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Row -->
+      <div class="live-action-row">
+        <a href="#" class="btn btn-view-live">
+          View All Live Classes
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Latest Articles Section -->
+  <section class="articles-section" id="latest-articles">
+    <div class="articles-container">
+      
+      <div class="articles-header">
+        <span class="articles-overline">Knowledge Hub</span>
+        <h2 class="articles-title">Latest Articles</h2>
+      </div>
+
+      <!-- Articles Grid (3 columns) -->
+      <div class="articles-grid">
+        
+        <!-- Article Card 1 -->
+        <div class="article-card glass-dark-card">
+          <div class="article-img-container">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="ISO Standards in Modern Business" class="article-img">
+            <span class="article-category-badge">Business</span>
+          </div>
+          <div class="article-content">
+            <span class="article-tag">Leadership and Personal Development</span>
+            <h3 class="article-card-title">Developing an Agile Mindset and Quality Standards</h3>
+            <p class="article-description">A deep dive into how standardizing processes can elevate team efficiency and quality assurance across corporate environments.</p>
+            <div class="article-meta">
+              <span class="article-author">By FutureStack Team</span>
+              <span class="article-read-time">5 Min Read</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article Card 2 -->
+        <div class="article-card glass-dark-card">
+          <div class="article-img-container">
+            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=600&q=80" alt="Technology in Education" class="article-img">
+            <span class="article-category-badge">Education</span>
+          </div>
+          <div class="article-content">
+            <span class="article-tag">Leadership and Personal Development</span>
+            <h3 class="article-card-title">The Role of Technology in Modern Education</h3>
+            <p class="article-description">Technology has changed the way students learn and teachers teach. Today, schools and colleges use computers and smart platforms to build international careers.</p>
+            <div class="article-meta">
+              <span class="article-author">Lt Col Shreesh Kumar (Retd)</span>
+              <span class="article-read-time">2 Min Read</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article Card 3 -->
+        <div class="article-card glass-dark-card">
+          <div class="article-img-container">
+            <img src="https://images.unsplash.com/photo-1495364141860-b0d03eccd065?auto=format&fit=crop&w=600&q=80" alt="Time Management" class="article-img">
+            <span class="article-category-badge">Productivity</span>
+          </div>
+          <div class="article-content">
+            <span class="article-tag">Leadership and Personal Development</span>
+            <h3 class="article-card-title">The Crucial Importance of Time Management for Students</h3>
+            <p class="article-description">Effective time management is a critical skill that helps students balance academic demands, final year projects, and personal well-being.</p>
+            <div class="article-meta">
+              <span class="article-author">By Academic Council</span>
+              <span class="article-read-time">5 Min Read</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Row -->
+      <div class="articles-action-row">
+        <a href="#" class="btn btn-view-articles glass-btn">
+          Read More Articles
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-container">
+      
+      <div class="testimonials-header">
+        <span class="testimonials-overline">Testimonials</span>
+        <h2 class="testimonials-title">What Our Students Say</h2>
+        <p class="testimonials-subtitle">Real experiences from real learners. Their success is our greatest inspiration.</p>
+      </div>
+
+      <!-- Testimonials Carousel Viewport -->
+      <div class="testimonials-carousel-viewport">
+        <div class="testimonials-carousel-track" id="testimonial-track">
+          
+          <!-- Testimonial 1 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card glass-dark-card">
+              <div class="testimonial-top">
+                <span class="verified-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Verified
+                </span>
+                <div class="testimonial-stars">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                "The courses provided by <strong>FutureStack</strong> helped me improve my technical and communication skills significantly. The teaching style is very easy to understand, and the mentors are supportive throughout the learning process. The platform provides practical knowledge along with real-world examples."
+              </p>
+              <div class="testimonial-user">
+                <div class="user-avatar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="user-info">
+                  <h4 class="user-name">Aarav Sharma</h4>
+                  <span class="user-role">Student</span>
+                  <span class="user-date">May 7, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card glass-dark-card">
+              <div class="testimonial-top">
+                <span class="verified-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Verified
+                </span>
+                <div class="testimonial-stars">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                "I liked the smooth user interface and structured course content. The real-world case studies and presentation modules made learning highly interesting and directly applicable to corporate environments. Overall, it was a great experience that boosted my professional confidence."
+              </p>
+              <div class="testimonial-user">
+                <div class="user-avatar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="user-info">
+                  <h4 class="user-name">Ananya Iyer</h4>
+                  <span class="user-role">Business Analyst</span>
+                  <span class="user-date">May 6, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card glass-dark-card">
+              <div class="testimonial-top">
+                <span class="verified-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Verified
+                </span>
+                <div class="testimonial-stars">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                "I would highly recommend FutureStack to students who want to improve their communication skills and grow professionally. The mentorship programs and live training sessions are top-notch and cover practical concepts that traditional university courses skip."
+              </p>
+              <div class="testimonial-user">
+                <div class="user-avatar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="user-info">
+                  <h4 class="user-name">Vikram Malhotra</h4>
+                  <span class="user-role">Engineering Graduate</span>
+                  <span class="user-date">May 5, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card glass-dark-card">
+              <div class="testimonial-top">
+                <span class="verified-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Verified
+                </span>
+                <div class="testimonial-stars">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                "The mentorship and networking opportunities at FutureStack are incredible. The corporate training workshops and mock interview modules helped me land my dream analyst role right after graduation."
+              </p>
+              <div class="testimonial-user">
+                <div class="user-avatar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="user-info">
+                  <h4 class="user-name">Priya Patel</h4>
+                  <span class="user-role">Data Scientist</span>
+                  <span class="user-date">May 4, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="testimonial-slide">
+            <div class="testimonial-card glass-dark-card">
+              <div class="testimonial-top">
+                <span class="verified-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  Verified
+                </span>
+                <div class="testimonial-stars">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-text">
+                "FutureStack's structured curriculum and hands-on corporate skills projects allowed me to transition into product management smoothly. The support and feedback are worth every penny."
+              </p>
+              <div class="testimonial-user">
+                <div class="user-avatar">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="user-info">
+                  <h4 class="user-name">Rohan Das</h4>
+                  <span class="user-role">Product Manager</span>
+                  <span class="user-date">May 3, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Slider Pagination indicators -->
+      <div class="testimonial-dots" id="testimonial-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+    </div>
+    </section>
+
+  <!-- CTA Banner Section -->
+  <section class="cta-banner-section" id="cta-banner">
+    <div class="cta-container">
+      <div class="cta-glass-card">
+        <h2 class="cta-title">Begin Your Professional Transformation</h2>
+        <p class="cta-subtitle">Join thousands of professionals who have elevated their careers through FutureStack's programs.</p>
+        <div class="cta-btn-group">
+          <a href="#" class="btn btn-cta-primary">
+            Register Now
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-cta-secondary">Browse Courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Footer Section -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="footer-col brand-col">
+          <a href="#" class="footer-brand">
+            <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="footer-logo">
+            <div class="footer-brand-text">
+              <span class="footer-brand-title">FutureStack</span>
+              <span class="footer-brand-subtitle">Integrating talent, thought and action.</span>
+            </div>
+          </a>
+          <p class="footer-description">
+            A premier institute for corporate training, leadership development, and management consultancy.
+          </p>
+          <div class="footer-award-badge">
+            <span class="award-trophy">🏆</span>
+            <span class="award-text">Top 10 Workforce Development Co. - SiliconIndia 2021</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col links-col">
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">Live Classes</a></li>
+            <li><a href="#">Articles</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Programs -->
+        <div class="footer-col links-col">
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links">
+            <li><a href="#">Leadership Development</a></li>
+            <li><a href="#">Communication Skills</a></li>
+            <li><a href="#">Personality Development</a></li>
+            <li><a href="#">Campus to Corporate</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer-col contact-col">
+          <h3 class="footer-col-title">Contact</h3>
+          <ul class="footer-contact-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+919890461942">+91 9890461942</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:support@eruditioninfinite.com">support@eruditioninfinite.com</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:shreeshkumar@gmail.com">shreeshkumar@gmail.com</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>
+                B-1/703 Whistling Palms,<br>
+                Aundh-Hinjewadi Road,<br>
+                Mankar chowk, Wakad,<br>
+                Pune 411057
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 FutureStack. All rights reserved.
+        </p>
+        <p class="attribution-text">
+          Designed & Developed by Sharik Ahmed
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- WhatsApp/Chat FAB -->
+  <a href="https://wa.me/919890461942" class="whatsapp-fab" target="_blank" aria-label="Chat on WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+  </a>
+
+
+
   <!-- Javascript for Interactivity -->
   <script>
     // Header shadow on scroll
@@ -279,6 +1169,100 @@
       // Mute on leave
       heroBanner.addEventListener('mouseleave', () => {
         bgVideo.muted = true;
+      });
+    }
+
+    // Testimonial Carousel Auto-Scroll Logic (Multi-card)
+    const track = document.getElementById('testimonial-track');
+    const dotsContainer = document.getElementById('testimonial-dots');
+    
+    if (track && dotsContainer) {
+      const slides = Array.from(track.children);
+      const dots = Array.from(dotsContainer.children);
+      let currentIndex = 0;
+      let autoScrollTimer;
+
+      function getVisibleCardsCount() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
+      }
+
+      function updateCarousel(index) {
+        const visibleCards = getVisibleCardsCount();
+        const maxIndex = slides.length - visibleCards;
+        
+        // Clamp index
+        if (index > maxIndex) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = maxIndex;
+        } else {
+          currentIndex = index;
+        }
+
+        // Calculate transition offset
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = parseFloat(window.getComputedStyle(track).gap) || 32;
+        const offset = currentIndex * (slideWidth + gap);
+
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        // Update dots
+        dots.forEach((dot, idx) => {
+          if (idx === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      function nextSlide() {
+        const visibleCards = getVisibleCardsCount();
+        const maxIndex = slides.length - visibleCards;
+        let nextIdx = currentIndex + 1;
+        if (nextIdx > maxIndex) {
+          nextIdx = 0;
+        }
+        updateCarousel(nextIdx);
+      }
+
+      function startAutoScroll() {
+        autoScrollTimer = setInterval(nextSlide, 2000); // Scroll every 2 seconds
+      }
+
+      function stopAutoScroll() {
+        clearInterval(autoScrollTimer);
+      }
+
+      // Initialize
+      setTimeout(() => {
+        updateCarousel(0);
+        startAutoScroll();
+      }, 100);
+
+      // Dots interaction
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          stopAutoScroll();
+          updateCarousel(index);
+          startAutoScroll();
+        });
+      });
+
+      // Pause on hover
+      const testimonialsSection = document.getElementById('testimonials');
+      if (testimonialsSection) {
+        testimonialsSection.addEventListener('mouseenter', stopAutoScroll);
+        testimonialsSection.addEventListener('mouseleave', startAutoScroll);
+      }
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        stopAutoScroll();
+        updateCarousel(currentIndex);
+        startAutoScroll();
       });
     }
   </script>
