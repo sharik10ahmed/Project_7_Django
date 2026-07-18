@@ -1,0 +1,1011 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses | FutureStack</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{% static 'style.css' %}?v=1.26">
+  <!-- Favicon for all devices -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+  <style>
+    /* Premium Courses Hero Header Styles */
+    .courses-hero-section {
+      background-color: #061540 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      padding: 6.5rem 2rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    }
+    
+    /* Glowing radial background effects for dark glass theme */
+    .courses-hero-section::before {
+      content: '' !important;
+      position: absolute !important;
+      top: -20% !important;
+      left: -10% !important;
+      width: 60% !important;
+      height: 70% !important;
+      background: radial-gradient(circle, rgba(0, 64, 224, 0.15) 0%, transparent 70%) !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+    }
+    .courses-hero-section::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -20% !important;
+      right: -10% !important;
+      width: 60% !important;
+      height: 70% !important;
+      background: radial-gradient(circle, rgba(0, 144, 240, 0.1) 0%, transparent 70%) !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+    }
+
+    .courses-hero-container {
+      max-width: 900px !important;
+      width: 100% !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    .courses-glass-card {
+      background: rgba(255, 255, 255, 0.02) !important;
+      backdrop-filter: blur(25px) !important;
+      -webkit-backdrop-filter: blur(25px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.07) !important;
+      border-radius: 20px !important;
+      padding: 2.25rem 2.5rem !important;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+      transition: all 0.4s ease !important;
+    }
+    .courses-glass-card:hover {
+      border-color: rgba(0, 144, 240, 0.2) !important;
+      box-shadow: 0 25px 60px rgba(0, 64, 224, 0.08) !important;
+    }
+
+    .courses-overline-label {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.82rem !important;
+      font-weight: 700 !important;
+      color: var(--secondary-color) !important;
+      letter-spacing: 3px !important;
+      text-transform: uppercase !important;
+      display: inline-block !important;
+      margin-bottom: 0.75rem !important;
+    }
+
+    .courses-hero-title {
+      font-family: 'Playfair Display', Georgia, serif !important;
+      font-size: 2.25rem !important;
+      font-weight: 700 !important;
+      color: #ffffff !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.85rem !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    .courses-hero-subtitle {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.98rem !important;
+      line-height: 1.65 !important;
+      color: rgba(255, 255, 255, 0.7) !important;
+      max-width: 620px !important;
+      margin: 0 auto !important;
+    }
+
+    @media (max-width: 768px) {
+      .courses-hero-section {
+        padding: 5.5rem 1.5rem !important;
+      }
+      .courses-glass-card {
+        padding: 2rem 1.5rem !important;
+      }
+      .courses-hero-title {
+        font-size: 1.85rem !important;
+      }
+      .courses-hero-subtitle {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    /* Premium Glassmorphic Courses Catalog */
+    .courses-catalog-section {
+      background-color: #ffffff !important;
+      padding: 5rem 2rem 8rem 2rem !important;
+      color: var(--primary-color) !important;
+      position: relative !important;
+    }
+    .catalog-container {
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+    }
+    
+    /* Search & Filter Controls */
+    .catalog-controls {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2rem !important;
+      margin-bottom: 4rem !important;
+      align-items: center !important;
+    }
+    .catalog-search-wrapper {
+      position: relative !important;
+      max-width: 600px !important;
+      width: 100% !important;
+    }
+    .catalog-search-input {
+      width: 100% !important;
+      background: #f8fafc !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      border-radius: 30px !important;
+      padding: 0.9rem 1.5rem 0.9rem 3.2rem !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.95rem !important;
+      color: var(--primary-color) !important;
+      outline: none !important;
+      transition: all 0.3s ease !important;
+    }
+    .catalog-search-input::placeholder {
+      color: rgba(0, 0, 0, 0.4) !important;
+    }
+    .catalog-search-input:focus {
+      border-color: var(--secondary-color) !important;
+      box-shadow: 0 0 15px rgba(0, 144, 240, 0.1) !important;
+      background: #ffffff !important;
+    }
+    .catalog-search-icon {
+      position: absolute !important;
+      left: 1.25rem !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      color: rgba(0, 0, 0, 0.4) !important;
+      pointer-events: none !important;
+    }
+    .catalog-search-icon svg {
+      width: 18px !important;
+      height: 18px !important;
+      stroke: currentColor !important;
+    }
+
+    .filter-tags-list {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.85rem !important;
+      justify-content: center !important;
+      max-width: 900px !important;
+    }
+    .filter-btn-glass {
+      background: #f1f5f9 !important;
+      border: 1px solid rgba(0, 0, 0, 0.06) !important;
+      border-radius: 30px !important;
+      padding: 0.5rem 1.2rem !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      color: var(--text-muted) !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+    .filter-btn-glass:hover {
+      background: #e2e8f0 !important;
+      color: var(--primary-color) !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    .filter-btn-glass.active {
+      background: linear-gradient(90deg, var(--accent-color), var(--secondary-color)) !important;
+      color: #ffffff !important;
+      border-color: var(--accent-color) !important;
+      box-shadow: 0 4px 15px rgba(0, 64, 224, 0.15) !important;
+    }
+
+    /* Course Cards Grid */
+    .courses-catalog-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2.25rem !important;
+    }
+    .course-card-premium {
+      background: #ffffff !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-shadow: 0 10px 30px rgba(0, 16, 64, 0.04) !important;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      position: relative !important;
+      text-align: left !important;
+    }
+    .course-card-premium:hover {
+      transform: translateY(-6px) !important;
+      border-color: rgba(0, 64, 224, 0.15) !important;
+      box-shadow: 0 20px 40px rgba(0, 16, 64, 0.08) !important;
+    }
+    .card-banner-wrapper {
+      position: relative !important;
+      width: 100% !important;
+      height: 200px !important;
+      overflow: hidden !important;
+      background: #f1f5f9 !important;
+    }
+    .card-banner-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .course-card-premium:hover .card-banner-img {
+      transform: scale(1.06) !important;
+    }
+    .discount-badge-glass {
+      position: absolute !important;
+      top: 1rem !important;
+      right: 1rem !important;
+      background: #ef4444 !important;
+      color: #ffffff !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      padding: 0.3rem 0.75rem !important;
+      border-radius: 30px !important;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2) !important;
+      letter-spacing: 0.5px !important;
+    }
+    .card-body-content {
+      padding: 1.75rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 !important;
+    }
+    .card-tags-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-bottom: 0.85rem !important;
+    }
+    .card-tag-category {
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      color: var(--accent-color) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+    }
+    .card-tag-level {
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      background: #f1f5f9 !important;
+      color: var(--text-muted) !important;
+      padding: 0.2rem 0.6rem !important;
+      border-radius: 4px !important;
+      border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    }
+    .card-title-serif {
+      font-family: 'Playfair Display', Georgia, serif !important;
+      font-size: 1.35rem !important;
+      font-weight: 700 !important;
+      color: var(--primary-color) !important;
+      line-height: 1.4 !important;
+      margin-bottom: 0.75rem !important;
+      min-height: 3.8rem !important;
+    }
+    .card-desc-text {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.9rem !important;
+      line-height: 1.6 !important;
+      color: var(--text-muted) !important;
+      margin-bottom: 1.5rem !important;
+      min-height: 4.8rem !important;
+    }
+    .card-meta-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.85rem !important;
+      padding-top: 1.25rem !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+      margin-bottom: 1.5rem !important;
+    }
+    .meta-item-spec {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      font-size: 0.85rem !important;
+      color: var(--text-muted) !important;
+    }
+    .meta-item-spec svg {
+      stroke: var(--secondary-color) !important;
+      flex-shrink: 0 !important;
+    }
+    .meta-item-spec.rating svg {
+      stroke: #fbbf24 !important;
+      fill: #fbbf24 !important;
+    }
+    .card-price-instructor-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-end !important;
+      margin-bottom: 1.5rem !important;
+    }
+    .card-price-box {
+      text-align: left !important;
+    }
+    .card-price-original {
+      font-size: 0.82rem !important;
+      color: var(--text-muted) !important;
+      text-decoration: line-through !important;
+      display: block !important;
+      margin-bottom: 0.15rem !important;
+    }
+    .card-price-current {
+      font-size: 1.6rem !important;
+      font-weight: 800 !important;
+      color: #ef4444 !important;
+      display: block !important;
+      line-height: 1 !important;
+    }
+    .card-instructor-box {
+      text-align: right !important;
+    }
+    .card-instructor-label {
+      font-size: 0.72rem !important;
+      color: var(--text-muted) !important;
+      text-transform: uppercase !important;
+      display: block !important;
+      margin-bottom: 0.15rem !important;
+    }
+    .card-instructor-name {
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: var(--primary-color) !important;
+    }
+    .card-actions-grid {
+      display: grid !important;
+      grid-template-columns: 1.1fr 0.9fr !important;
+      gap: 0.75rem !important;
+      margin-top: auto !important;
+    }
+    .btn-card-enroll {
+      background: var(--accent-color) !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 0.75rem !important;
+      border-radius: 6px !important;
+      font-size: 0.88rem !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 10px rgba(0, 64, 224, 0.15) !important;
+    }
+    .btn-card-enroll:hover {
+      background: var(--accent-hover) !important;
+      transform: translateY(-1px) !important;
+    }
+    .btn-card-view-outline {
+      background: transparent !important;
+      border: 1px solid rgba(0, 0, 0, 0.12) !important;
+      color: var(--primary-color) !important;
+      padding: 0.75rem !important;
+      border-radius: 6px !important;
+      font-size: 0.88rem !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      text-decoration: none !important;
+      transition: all 0.3s ease !important;
+    }
+    .btn-card-view-outline:hover {
+      border-color: var(--secondary-color) !important;
+      color: var(--secondary-color) !important;
+      background: rgba(0, 144, 240, 0.05) !important;
+    }
+
+    @media (max-width: 992px) {
+      .courses-catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .courses-catalog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Header -->
+  <header class="header" id="header">
+    <nav class="navbar">
+      
+      <!-- Brand & Logo -->
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-title">FutureStack</span>
+          <span class="brand-subtitle">Integrating talent, thought and action.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="{% url 'home' %}" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'about' %}" class="nav-link">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="{% url 'courses' %}" class="nav-link active" id="courses-dropdown-toggle">
+            Courses
+            <!-- Dropdown Arrow Icon -->
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="megamenu-panel">
+            <div class="megamenu-header">
+              <span class="megamenu-title">Explore Courses</span>
+              <a href="{% url 'courses' %}" class="megamenu-viewall">
+                View All
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+            
+            <div class="megamenu-grid">
+              <!-- Leadership -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box blue">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"></path><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Leadership</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Leadership Development</a></li>
+                  <li><a href="#">Executive Coaching</a></li>
+                  <li><a href="#">Team Management</a></li>
+                </ul>
+              </div>
+              
+              <!-- Personal Development -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box orange">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Personal Development</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Personality Development</a></li>
+                  <li><a href="#">Personal Growth</a></li>
+                  <li><a href="#">Self-Development</a></li>
+                </ul>
+              </div>
+              
+              <!-- Communication -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box green">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Communication</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Business Communication</a></li>
+                  <li><a href="#">Public Speaking</a></li>
+                  <li><a href="#">Presentation Skills</a></li>
+                </ul>
+              </div>
+              
+              <!-- Corporate Skills -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box purple">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Corporate Skills</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Corporate Training</a></li>
+                  <li><a href="#">Soft Skills</a></li>
+                  <li><a href="#">Professional Development</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="megamenu-footer">
+              <span class="footer-dot-indicator"></span>
+              <span class="footer-label">Popular:</span>
+              <div class="footer-tags">
+                <a href="#" class="footer-tag">Leadership</a>
+                <a href="#" class="footer-tag">Communication</a>
+                <a href="#" class="footer-tag">Personality</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'live_classes' %}" class="nav-link">Live Classes</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'articles' %}" class="nav-link">Articles</a>
+        </li>
+      </ul>
+
+      <!-- Search Bar -->
+      <div class="search-container" id="search-container">
+        <span class="search-icon">
+          <!-- Magnifying Glass Icon -->
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="text" class="search-input" placeholder="Search for courses, articles, skills...">
+      </div>
+
+      <!-- Auth Actions -->
+      <div class="nav-actions" id="nav-actions">
+        {% if user.is_authenticated %}
+          <span class="welcome-user">Hi, {{ user.first_name|default:user.username }}</span>
+          <a href="{% url 'login' %}" class="btn btn-link">Sign Out</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-link">Sign In</a>
+          <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+        <!-- Hamburger Menu Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12" id="line1"></line>
+          <line x1="3" y1="6" x2="21" y2="6" id="line2"></line>
+          <line x1="3" y1="18" x2="21" y2="18" id="line3"></line>
+        </svg>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- Courses Hero Header (Glassmorphic Theme) -->
+  <section class="courses-hero-section">
+    <div class="courses-hero-container">
+      <div class="courses-glass-card">
+        <span class="courses-overline-label">OUR PROGRAMS</span>
+        <h1 class="courses-hero-title">Courses</h1>
+        <p class="courses-hero-subtitle">
+          Comprehensive training programs designed for professionals at every stage of their career.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Catalog Section -->
+  <section class="courses-catalog-section">
+    <div class="catalog-container">
+      
+      <!-- Search & Filters -->
+      <div class="catalog-controls">
+        <!-- Search Input -->
+        <div class="catalog-search-wrapper">
+          <span class="catalog-search-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="text" class="catalog-search-input" placeholder="Search courses...">
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filter-tags-list">
+          <button class="filter-btn-glass active">All</button>
+          <button class="filter-btn-glass">Leadership and Personal Development</button>
+          <button class="filter-btn-glass">Communication Skills and Corporate Training</button>
+          <button class="filter-btn-glass">Campus to Corporate</button>
+          <button class="filter-btn-glass">Project Management</button>
+          <button class="filter-btn-glass">Life Skills Train the Trainer</button>
+        </div>
+      </div>
+
+      <!-- Course Cards Grid -->
+      <div class="courses-catalog-grid">
+        
+        <!-- Card 1 -->
+        <div class="course-card-premium">
+          <div class="card-banner-wrapper">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Leadership Mastery" class="card-banner-img">
+            <span class="discount-badge-glass">33% OFF</span>
+          </div>
+          <div class="card-body-content">
+            <div class="card-tags-row">
+              <span class="card-tag-category">Leadership and Personal Development</span>
+              <span class="card-tag-level">Advanced</span>
+            </div>
+            <h3 class="card-title-serif">Leadership Mastery for Young Professionals</h3>
+            <p class="card-desc-text">
+              Learn how to become a confident leader, make smart decisions, and manage teams effectively. This course focuses on real-world leadership.
+            </p>
+            
+            <div class="card-meta-grid">
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                6 Weeks
+              </div>
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                6 Modules
+              </div>
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                5 Enrolled
+              </div>
+              <div class="meta-item-spec rating">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                4.5
+              </div>
+            </div>
+
+            <div class="card-price-instructor-row">
+              <div class="card-price-box">
+                <span class="card-price-original">₹15,000</span>
+                <span class="card-price-current">₹10,000</span>
+              </div>
+              <div class="card-instructor-box">
+                <span class="card-instructor-label">Instructor</span>
+                <span class="card-instructor-name">Lt Col Shreesh Kumar (Retd)</span>
+              </div>
+            </div>
+
+            <div class="card-actions-grid">
+              <a href="#" class="btn-card-enroll">Enroll Now</a>
+              <a href="#" class="btn-card-view-outline">View Course</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="course-card-premium">
+          <div class="card-banner-wrapper">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" alt="Personal Growth" class="card-banner-img">
+            <span class="discount-badge-glass">20% OFF</span>
+          </div>
+          <div class="card-body-content">
+            <div class="card-tags-row">
+              <span class="card-tag-category">Communication & Corporate</span>
+              <span class="card-tag-level">Advanced</span>
+            </div>
+            <h3 class="card-title-serif">Personal Growth & Self-Development Bootcamp</h3>
+            <p class="card-desc-text">
+              This course helps you improve your mindset, discipline, and daily habits to break barriers and become your best version.
+            </p>
+            
+            <div class="card-meta-grid">
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                4 Weeks
+              </div>
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                6 Modules
+              </div>
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                5 Enrolled
+              </div>
+              <div class="meta-item-spec rating">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                4.5
+              </div>
+            </div>
+
+            <div class="card-price-instructor-row">
+              <div class="card-price-box">
+                <span class="card-price-original">₹4,999</span>
+                <span class="card-price-current">₹3,999</span>
+              </div>
+              <div class="card-instructor-box">
+                <span class="card-instructor-label">Instructor</span>
+                <span class="card-instructor-name">Lt Col Shreesh Kumar (Retd)</span>
+              </div>
+            </div>
+
+            <div class="card-actions-grid">
+              <a href="#" class="btn-card-enroll">Enroll Now</a>
+              <a href="#" class="btn-card-view-outline">View Course</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="course-card-premium">
+          <div class="card-banner-wrapper">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Personality Development" class="card-banner-img">
+            <span class="discount-badge-glass">29% OFF</span>
+          </div>
+          <div class="card-body-content">
+            <div class="card-tags-row">
+              <span class="card-tag-category">Leadership and Personal Development</span>
+              <span class="card-tag-level">Advanced</span>
+            </div>
+            <h3 class="card-title-serif">Personality Development Program</h3>
+            <p class="card-desc-text">
+              Equip yourself with elite interpersonal dynamics, presentation skills, self-awareness, and values to project a standout professional brand.
+            </p>
+            
+            <div class="card-meta-grid">
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                8 Weeks
+              </div>
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                6 Modules
+              </div>
+              <div class="meta-item-spec">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                5 Enrolled
+              </div>
+              <div class="meta-item-spec rating">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                4.5
+              </div>
+            </div>
+
+            <div class="card-price-instructor-row">
+              <div class="card-price-box">
+                <span class="card-price-original">₹6,999</span>
+                <span class="card-price-current">₹5,000</span>
+              </div>
+              <div class="card-instructor-box">
+                <span class="card-instructor-label">Instructor</span>
+                <span class="card-instructor-name">Lt Col Shreesh Kumar (Retd)</span>
+              </div>
+            </div>
+
+            <div class="card-actions-grid">
+              <a href="#" class="btn-card-enroll">Enroll Now</a>
+              <a href="#" class="btn-card-view-outline">View Course</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Footer -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="footer-col brand-col">
+          <a href="{% url 'home' %}" class="footer-brand">
+            <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="footer-logo">
+            <div class="footer-brand-text">
+              <span class="footer-brand-title">FutureStack</span>
+              <span class="footer-brand-subtitle">Integrating talent, thought and action.</span>
+            </div>
+          </a>
+          <p class="footer-description">
+            A premier institute for corporate training, leadership development, and management consultancy.
+          </p>
+          <div class="footer-award-badge">
+            <span class="award-trophy">🏆</span>
+            <span class="award-text">Top 10 Workforce Development Co. - SiliconIndia 2021</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col links-col">
+          <h3 class="footer-col-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'courses' %}">Courses</a></li>
+            <li><a href="{% url 'live_classes' %}">Live Classes</a></li>
+            <li><a href="{% url 'articles' %}">Articles</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Programs -->
+        <div class="footer-col links-col">
+          <h3 class="footer-col-title">Programs</h3>
+          <ul class="footer-links">
+            <li><a href="#">Leadership Development</a></li>
+            <li><a href="#">Communication Skills</a></li>
+            <li><a href="#">Personality Development</a></li>
+            <li><a href="#">Campus to Corporate</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="footer-col contact-col">
+          <h3 class="footer-col-title">Contact</h3>
+          <ul class="footer-contact-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+919890461942">+91 9890461942</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:support@eruditioninfinite.com">support@eruditioninfinite.com</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:shreeshkumar@gmail.com">shreeshkumar@gmail.com</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>
+                B-1/703 Whistling Palms,<br>
+                Aundh-Hinjewadi Road,<br>
+                Mankar chowk, Wakad,<br>
+                Pune 411057
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 FutureStack. All rights reserved.
+        </p>
+        <p class="attribution-text">
+          Designed & Developed by Sharik Ahmed
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- WhatsApp/Chat FAB -->
+  <a href="https://wa.me/919890461942" class="whatsapp-fab" target="_blank" aria-label="Chat on WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+  </a>
+
+  <!-- Javascript for Interactivity -->
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const searchContainer = document.getElementById('search-container');
+    const navActions = document.getElementById('nav-actions');
+
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      searchContainer.classList.toggle('active');
+      navActions.classList.toggle('active');
+    });
+
+    // Dropdown toggle on mobile
+    const dropdownToggle = document.getElementById('courses-dropdown-toggle');
+    const navItemDropdown = dropdownToggle.closest('.nav-item.dropdown');
+
+    dropdownToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        navItemDropdown.classList.toggle('active');
+      }
+    });
+
+    // Real-time Search & Category Filtering
+    const searchInput = document.querySelector('.catalog-search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn-glass');
+    const courseCards = document.querySelectorAll('.course-card-premium');
+
+    let currentSearchQuery = '';
+    let currentCategory = 'all';
+
+    function filterCourses() {
+      courseCards.forEach(card => {
+        const title = card.querySelector('.card-title-serif').textContent.toLowerCase();
+        const description = card.querySelector('.card-desc-text').textContent.toLowerCase();
+        const categoryText = card.querySelector('.card-tag-category').textContent.toLowerCase();
+
+        // Search Match
+        const matchesSearch = title.includes(currentSearchQuery) || 
+                              description.includes(currentSearchQuery) || 
+                              categoryText.includes(currentSearchQuery);
+
+        // Category Match
+        let matchesCategory = false;
+        if (currentCategory === 'all') {
+          matchesCategory = true;
+        } else {
+          // Normalize texts for comparison
+          const cleanFilter = currentCategory.toLowerCase().trim();
+          const cleanCardCategory = categoryText.toLowerCase().trim();
+
+          // Custom fuzzy match for "communication" category mapping
+          if (cleanFilter.includes('communication') && cleanCardCategory.includes('communication')) {
+            matchesCategory = true;
+          } else {
+            matchesCategory = cleanCardCategory.includes(cleanFilter) || cleanFilter.includes(cleanCardCategory);
+          }
+        }
+
+        // Show/Hide based on combined match
+        if (matchesSearch && matchesCategory) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Search Input Event
+    const navSearchInput = document.querySelector('.search-container .search-input');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value.toLowerCase().trim();
+        if (navSearchInput) navSearchInput.value = e.target.value;
+        filterCourses();
+      });
+    }
+
+    if (navSearchInput) {
+      navSearchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value.toLowerCase().trim();
+        if (searchInput) searchInput.value = e.target.value;
+        filterCourses();
+      });
+    }
+
+    // Filter Buttons Click Events
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle Active Class
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        currentCategory = btn.textContent;
+        filterCourses();
+      });
+    });
+  </script>
+</body>
+</html>

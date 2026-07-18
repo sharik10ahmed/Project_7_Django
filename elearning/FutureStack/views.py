@@ -58,3 +58,15 @@ def register_view(request):
             messages.error(request, f"Error creating account: {str(e)}")
             
     return render(request, 'FutureStack/register.html')
+
+def about_view(request):
+    return render(request, 'FutureStack/about.html')
+
+def courses_view(request):
+    return render(request, 'FutureStack/courses.html')
+
+def live_classes_view(request):
+    return render(request, 'FutureStack/live_classes.html')
+
+def articles_view(request):
+    return render(request, 'FutureStack/articles.html')

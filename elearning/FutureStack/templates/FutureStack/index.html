@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="{% static 'style.css' %}?v=1.18">
+  <link rel="stylesheet" href="{% static 'style.css' %}?v=1.26">
   <!-- Favicon for all devices -->
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
@@ -36,13 +36,13 @@
       <!-- Navigation Links -->
       <ul class="nav-menu" id="nav-menu">
         <li class="nav-item">
-          <a href="#" class="nav-link">Home</a>
+          <a href="{% url 'home' %}" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">About</a>
+          <a href="{% url 'about' %}" class="nav-link">About</a>
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link" id="courses-dropdown-toggle">
+          <a href="{% url 'courses' %}" class="nav-link" id="courses-dropdown-toggle">
             Courses
             <!-- Dropdown Arrow Icon -->
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -132,10 +132,10 @@
           </div>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Live Classes</a>
+          <a href="{% url 'live_classes' %}" class="nav-link">Live Classes</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Articles</a>
+          <a href="{% url 'articles' %}" class="nav-link">Articles</a>
         </li>
       </ul>
 
@@ -187,14 +187,14 @@
       <h1 class="hero-title">Empower Your Learning Journey</h1>
       <p class="hero-description">Access high-quality courses, live interactive classes, and insightful projects designed to build cutting-edge skills and launch global careers.</p>
       <div class="hero-action-buttons">
-        <a href="#" class="btn btn-explore">
+        <a href="{% url 'courses' %}" class="btn btn-explore">
           Explore Courses
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
         </a>
-        <a href="#" class="btn btn-about">Learn More</a>
+        <a href="{% url 'about' %}" class="btn btn-about">About Us</a>
       </div>
     </div>
   </main>
@@ -1008,10 +1008,10 @@
         <div class="footer-col links-col">
           <h3 class="footer-col-title">Quick Links</h3>
           <ul class="footer-links">
-            <li><a href="#">About</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="#">Courses</a></li>
-            <li><a href="#">Live Classes</a></li>
-            <li><a href="#">Articles</a></li>
+            <li><a href="{% url 'live_classes' %}">Live Classes</a></li>
+            <li><a href="{% url 'articles' %}">Articles</a></li>
           </ul>
         </div>
 
