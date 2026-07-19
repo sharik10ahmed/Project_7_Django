@@ -1,0 +1,1787 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadership Mastery for Young Professionals - FutureStack</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{% static 'style.css' %}?v=1.25">
+  <!-- Favicon for all devices -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+  <style>
+    /* Premium Course Detail Hero Section styling according to brand colors */
+    .detail-hero-section {
+      background: linear-gradient(135deg, #000c2e 0%, #001b54 100%);
+      position: relative;
+      padding: 4rem 2rem 5rem 2rem;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .detail-hero-section::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 144, 240, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .detail-hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 992px) {
+      .detail-hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .detail-content-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Back Link styling */
+    .back-courses-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #93c5fd;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: color 0.2s ease;
+      width: fit-content;
+    }
+
+    .back-courses-link:hover {
+      color: var(--white);
+    }
+
+    /* Badges */
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .badge-category {
+      background: rgba(0, 144, 240, 0.12);
+      border: 1px solid rgba(0, 144, 240, 0.3);
+      color: #38bdf8;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .badge-level {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    /* Typography & Description */
+    .course-detail-title {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--white);
+      margin: 0 0 1.25rem 0;
+      letter-spacing: -0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .course-detail-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    .course-detail-desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 2rem 0;
+      max-width: 750px;
+    }
+
+    /* Rating elements */
+    .course-rating-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .rating-number {
+      font-weight: 800;
+      color: #f59e0b;
+      font-size: 1.1rem;
+    }
+
+    .rating-stars {
+      display: flex;
+      color: #f59e0b;
+    }
+
+    .rating-count {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .student-count {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+    }
+
+    /* Metadata icons block */
+    .course-meta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .meta-item svg {
+      color: #38bdf8;
+    }
+
+    .meta-label {
+      color: rgba(255, 255, 255, 0.6);
+      margin-right: 0.25rem;
+    }
+
+    /* Glassmorphism Enroll Card styling */
+    .checkout-card-column {
+      position: relative;
+    }
+
+    .glass-enroll-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: sticky;
+      top: 100px;
+    }
+
+    .glass-enroll-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 30px 60px rgba(0, 144, 240, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .card-preview-media {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-details-body {
+      padding: 2rem;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .current-price {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .original-price {
+      font-size: 1.25rem;
+      text-decoration: line-through;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .discount-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .enroll-action-btn {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 64, 224, 0.3);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .enroll-action-btn:hover {
+      box-shadow: 0 6px 20px rgba(0, 64, 224, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .includes-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0 0 1rem 0;
+      letter-spacing: 0.5px;
+    }
+
+    .includes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .includes-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .includes-item svg {
+      color: #10b981;
+      flex-shrink: 0;
+    }
+
+    /* Tabs Layout Styling */
+    .course-tabs-section {
+      background-color: var(--white);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0;
+    }
+
+    .tabs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .tabs-header-wrapper {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .tabs-list {
+      display: flex;
+      gap: 2.5rem;
+      margin-bottom: -1px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs-list::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-button {
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 1.5rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-button:hover {
+      color: var(--accent-color);
+    }
+
+    .tab-button.active {
+      color: var(--accent-color);
+      border-bottom-color: var(--accent-color);
+    }
+
+    .tab-panels-content {
+      padding: 3rem 0;
+      max-width: 750px;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .panel-card {
+      background: var(--white);
+    }
+
+    .panel-card h3 {
+      font-size: 1.5rem;
+      color: #001040;
+      margin: 0 0 1.25rem 0;
+      font-weight: 700;
+    }
+
+    .panel-card h4 {
+      font-size: 1.1rem;
+      color: #001040;
+      margin: 0 0 0.85rem 0;
+      font-weight: 700;
+    }
+
+    .panel-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* Curriculum accordion styling */
+    .curriculum-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      color: #001040;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .module-duration {
+      font-size: 0.8rem;
+      background: rgba(0, 64, 224, 0.05);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      color: var(--accent-color);
+    }
+
+    .accordion-body {
+      padding: 1.25rem;
+      border-top: 1px solid var(--border-color);
+      background: var(--white);
+    }
+
+    /* Recorded Lectures */
+    .lectures-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .lecture-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+    }
+
+    .lecture-item:hover {
+      border-color: var(--accent-color);
+      box-shadow: 0 4px 15px rgba(0, 64, 224, 0.05);
+    }
+
+    .lecture-play-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 64, 224, 0.08);
+      color: var(--accent-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lecture-details h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .lecture-details p {
+      margin: 0.25rem 0 0 0;
+      font-size: 0.85rem;
+    }
+
+    /* Live Classes */
+    .live-class-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      border: 1px solid rgba(0, 64, 224, 0.15);
+      background: rgba(0, 64, 224, 0.02);
+      border-radius: 12px;
+      padding: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .live-status-badge {
+      background: #10b981;
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Notes */
+    .notes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .note-file-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+    }
+
+    /* Overview Tab Section styles */
+    .overview-section-title {
+      font-size: 1.4rem;
+      color: #001040;
+      font-weight: 700;
+      margin: 2rem 0 0.75rem 0;
+    }
+
+    .overview-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 16, 64, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 16, 64, 0.02);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .overview-card-icon {
+      color: #10b981;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overview-card-text {
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .include-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #ffffff;
+      border: 1px solid rgba(0, 16, 64, 0.05);
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    .include-box svg {
+      color: var(--accent-color);
+      flex-shrink: 0;
+    }
+
+    .instructor-card-premium {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      background: #ffffff;
+      border: 1px solid rgba(0, 16, 64, 0.06);
+      box-shadow: 0 6px 25px rgba(0, 16, 64, 0.03);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 1rem;
+    }
+
+    .instructor-avatar-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(0, 64, 224, 0.15);
+      flex-shrink: 0;
+    }
+
+    .instructor-info {
+      flex-grow: 1;
+    }
+
+    .instructor-name-header {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #001040;
+      margin: 0;
+    }
+
+    .instructor-title-sub {
+      font-size: 0.85rem;
+      color: var(--secondary-color);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0.25rem 0 0.75rem 0;
+    }
+
+    .instructor-bio-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Recorded lectures custom layout styles */
+    .recorded-intro-text {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .recorded-week-title {
+      font-size: 1.25rem;
+      color: #001040;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    .recorded-lecture-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: #ffffff;
+      border: 1px solid rgba(0, 16, 64, 0.05);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .recorded-lecture-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 16, 64, 0.03);
+      border-color: rgba(0, 64, 224, 0.1);
+    }
+
+    .lecture-thumbnail-wrapper {
+      position: relative;
+      width: 140px;
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .lecture-thumbnail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumbnail-play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 16, 64, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .thumbnail-play-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #001040;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .lecture-main-info {
+      flex-grow: 1;
+    }
+
+    .lecture-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #001040;
+      margin: 0 0 0.4rem 0;
+    }
+
+    .lecture-card-desc {
+      font-size: 0.88rem;
+      color: #6b7280;
+      line-height: 1.5;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .lecture-duration-row {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      font-weight: 600;
+    }
+
+    .locked-status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      font-weight: 600;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    /* Notes tab custom layout styles */
+    .notes-intro-text {
+      color: #6b7280;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .notes-card-premium {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 64, 224, 0.08);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .notes-card-premium:hover {
+      border-color: rgba(0, 64, 224, 0.25);
+      box-shadow: 0 8px 30px rgba(0, 64, 224, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .notes-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: rgba(0, 64, 224, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-color);
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .notes-card-premium:hover .notes-icon-wrapper {
+      background: rgba(0, 64, 224, 0.12);
+      transform: scale(1.05);
+    }
+
+    .notes-content-area {
+      flex-grow: 1;
+    }
+
+    .notes-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .notes-card-desc {
+      font-size: 0.95rem;
+      color: #4b5563;
+      line-height: 1.6;
+      margin: 0 0 0.75rem 0;
+    }
+
+    .notes-timestamp {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-bottom: 1rem;
+    }
+
+    .notes-locked-message {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin: 1rem 0 0.75rem 0;
+    }
+
+    .notes-locked-action {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      font-weight: 600;
+    }
+
+    .notes-buttons-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn-notes-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1.5px solid var(--accent-color);
+      background: transparent;
+      color: var(--accent-color);
+      padding: 0.6rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-notes-outline:hover {
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      color: var(--white);
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(0, 64, 224, 0.2);
+      transform: translateY(-1px);
+    }
+
+    /* Reviews tab custom layout styles */
+    .reviews-card-premium {
+      background: #ffffff;
+      border: 1.5px solid rgba(0, 64, 224, 0.08);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 16, 64, 0.01);
+      transition: all 0.3s ease;
+    }
+
+    .reviews-card-premium:hover {
+      border-color: rgba(0, 64, 224, 0.2);
+      box-shadow: 0 8px 30px rgba(0, 64, 224, 0.04);
+    }
+
+    .reviews-summary-layout {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .reviews-score-box {
+      text-align: center;
+      min-width: 140px;
+      padding-right: 3rem;
+      border-right: 1px solid rgba(0, 64, 224, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .reviews-score-box {
+        border-right: none;
+        padding-right: 0;
+        min-width: 100%;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .reviews-large-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .reviews-stars-row {
+      display: flex;
+      justify-content: center;
+      color: #f59e0b;
+      margin-bottom: 0.5rem;
+      gap: 0.15rem;
+    }
+
+    .reviews-score-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #6b7280;
+    }
+
+    .reviews-progress-bars {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .review-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.88rem;
+      color: #4b5563;
+    }
+
+    .review-bar-track {
+      flex-grow: 1;
+      height: 8px;
+      background: #f3f4f6;
+      border-radius: 99px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .review-bar-fill {
+      height: 100%;
+      background: #f59e0b;
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .review-bar-star-label {
+      min-width: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.25rem;
+      font-weight: 600;
+      color: #4b5563;
+    }
+
+    .review-bar-percent {
+      min-width: 35px;
+      text-align: right;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    /* Leave a Review section */
+    .leave-review-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin: 0 0 1rem 0;
+    }
+
+    .interactive-stars-row {
+      display: flex;
+      gap: 0.4rem;
+      color: #d1d5db;
+      margin-bottom: 1.25rem;
+      cursor: pointer;
+    }
+
+    .interactive-star-svg {
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+
+    .interactive-star-svg:hover {
+      transform: scale(1.15);
+    }
+
+    .interactive-star-svg.selected,
+    .interactive-star-svg.hovered {
+      color: #f59e0b;
+    }
+
+    .review-textarea {
+      width: 100%;
+      height: 100px;
+      border: 1.5px solid rgba(0, 64, 224, 0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #1f2937;
+      resize: vertical;
+      outline: none;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+      transition: all 0.25s ease;
+      margin-bottom: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    .review-textarea:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(0, 64, 224, 0.05), inset 0 2px 4px rgba(0, 0, 0, 0.01);
+    }
+
+    .btn-review-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 64, 224, 0.15);
+      transition: all 0.25s ease;
+    }
+
+    .btn-review-submit:hover {
+      box-shadow: 0 6px 18px rgba(0, 64, 224, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .no-reviews-box {
+      text-align: center;
+      padding: 3rem 0;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Premium Header -->
+  <header class="header" id="header">
+    <nav class="navbar">
+      
+      <!-- Brand & Logo -->
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-title">FutureStack</span>
+          <span class="brand-subtitle">Integrating talent, thought and action.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="{% url 'home' %}" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'about' %}" class="nav-link">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="{% url 'courses' %}" class="nav-link" id="courses-dropdown-toggle">
+            Courses
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="megamenu-panel">
+            <div class="megamenu-header">
+              <span class="megamenu-title">Explore Courses</span>
+              <a href="{% url 'courses' %}" class="megamenu-viewall">
+                View All
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+            
+            <div class="megamenu-grid">
+              <!-- Leadership -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box blue">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"></path><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Leadership</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Leadership Development</a></li>
+                  <li><a href="#">Executive Coaching</a></li>
+                  <li><a href="#">Team Management</a></li>
+                </ul>
+              </div>
+              
+              <!-- Personal Development -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box orange">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Personal Development</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Personality Development</a></li>
+                  <li><a href="#">Personal Growth</a></li>
+                  <li><a href="#">Self-Development</a></li>
+                </ul>
+              </div>
+              
+              <!-- Communication -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box green">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Communication</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Business Communication</a></li>
+                  <li><a href="#">Public Speaking</a></li>
+                  <li><a href="#">Presentation Skills</a></li>
+                </ul>
+              </div>
+              
+              <!-- Corporate Skills -->
+              <div class="megamenu-column">
+                <div class="megamenu-heading-wrapper">
+                  <div class="megamenu-icon-box purple">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+                  </div>
+                  <h4 class="megamenu-heading">Corporate Skills</h4>
+                </div>
+                <ul class="megamenu-list">
+                  <li><a href="#">Corporate Training</a></li>
+                  <li><a href="#">Soft Skills</a></li>
+                  <li><a href="#">Professional Development</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="megamenu-footer">
+              <span class="footer-dot-indicator"></span>
+              <span class="footer-label">Popular:</span>
+              <div class="footer-tags">
+                <a href="#" class="footer-tag">Leadership</a>
+                <a href="#" class="footer-tag">Communication</a>
+                <a href="#" class="footer-tag">Personality</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{% url 'live_classes' %}" class="nav-link">Live Classes</a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a href="{% url 'articles' %}" class="nav-link">Articles</a>
+        </li>
+      </ul>
+
+      <!-- Auth Actions -->
+      <div class="nav-actions" id="nav-actions">
+        {% if user.is_authenticated %}
+          <!-- User Profile Dropdown -->
+          <div class="user-profile-dropdown">
+            <button class="user-profile-btn" id="user-profile-btn" aria-haspopup="true" aria-expanded="false" aria-label="User Profile">
+              <span class="user-avatar-initials">{{ user.first_name|default:user.username|slice:":1"|upper }}</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </button>
+            <div class="user-dropdown-menu" id="user-dropdown-menu">
+              <div class="dropdown-header">
+                <p class="user-name">{{ user.first_name|default:user.username }}</p>
+                <p class="user-email">{{ user.email }}</p>
+              </div>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                My Profile
+              </a>
+              <a href="{% url 'courses' %}" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                My Courses
+              </a>
+              <hr class="dropdown-divider">
+              <a href="{% url 'logout' %}" class="dropdown-item logout-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Sign Out
+              </a>
+            </div>
+          </div>
+          <script>
+            document.getElementById('user-profile-btn')?.addEventListener('click', function(e) {
+              e.stopPropagation();
+              document.getElementById('user-dropdown-menu')?.classList.toggle('show');
+            });
+            document.addEventListener('click', function() {
+              document.getElementById('user-dropdown-menu')?.classList.remove('show');
+            });
+          </script>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-link">Sign In</a>
+          <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+        {% endif %}
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Premium Course Detail Hero -->
+  <main class="detail-hero-section">
+    <div class="detail-hero-container">
+      
+      <!-- Left Column: Content Details -->
+      <div class="detail-content-column">
+        <a href="{% url 'courses' %}" class="back-courses-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to Courses
+        </a>
+
+        <div class="badge-row">
+          <span class="badge-category">{{ course.category }}</span>
+          <span class="badge-level">{{ course.level }}</span>
+        </div>
+
+        <h1 class="course-detail-title">{{ course.title }}</h1>
+        
+        <p class="course-detail-desc">
+          {{ course.description }}
+        </p>
+
+        <div class="course-rating-row">
+          <span class="rating-number">4.5</span>
+          <div class="rating-stars">
+            <!-- 5 Stars SVG -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.3;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <span class="rating-count">(0 ratings)</span>
+          <span style="color: rgba(255,255,255,0.3);">|</span>
+          <span class="student-count">{{ course.students_count }} students</span>
+        </div>
+
+        <div class="course-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Created by</span>
+            <strong>{{ course.instructor_name }}</strong>
+          </div>
+          <div class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>English</span>
+          </div>
+          <div class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Updated Recently</span>
+          </div>
+          <div class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-6l-3 9L9 3l-3 9H2"></path>
+            </svg>
+            <span>Certificate of completion</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Glassmorphism Checkout Card -->
+      <div class="checkout-card-column">
+        <div class="glass-enroll-card">
+          <!-- Premium themed vector/photo preview -->
+          <img src="{% if course.banner_image %}{{ course.banner_image.url }}{% else %}{{ course.banner_image_url }}{% endif %}" alt="{{ course.title }} preview" class="card-preview-media">
+          
+          <div class="card-details-body">
+            <div class="card-price-row">
+              <span class="current-price">₹{{ course.payable_amount|floatformat:"0" }}</span>
+              <span class="original-price">₹{{ course.original_price|floatformat:"0" }}</span>
+              {% if course.discount_percentage > 0 %}
+              <span class="discount-badge">{{ course.discount_percentage }}% OFF</span>
+              {% endif %}
+            </div>
+
+            <button class="enroll-action-btn">Enroll Now - ₹{{ course.payable_amount|floatformat:"0" }}</button>
+
+            <h3 class="includes-header">This course includes:</h3>
+            <ul class="includes-list">
+              <li class="includes-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>6 total hours on-demand learning</span>
+              </li>
+              <li class="includes-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>6 comprehensive modules</span>
+              </li>
+              <li class="includes-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>1 recorded guest lecture</span>
+              </li>
+              <li class="includes-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Downloadable notes & templates</span>
+              </li>
+              <li class="includes-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Full lifetime learning access</span>
+              </li>
+              <li class="includes-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Verified Certificate of Completion</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Premium Tabs Section -->
+  <section class="course-tabs-section">
+    <div class="tabs-container">
+      <div class="tabs-header-wrapper">
+        <div class="tabs-list" role="tablist">
+          <button class="tab-button active" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="curriculum">Curriculum</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="recorded">Recorded Lectures</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="live">Live Classes</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="notes">Notes</button>
+          <button class="tab-button" role="tab" aria-selected="false" data-tab="reviews">Reviews</button>
+        </div>
+      </div>
+
+      <div class="tab-panels-content">
+        <!-- Overview Panel -->
+        <div class="tab-panel active" id="panel-overview">
+          
+          <!-- What You'll Learn -->
+          <h3 class="overview-section-title">What You'll Learn</h3>
+          <div class="overview-card">
+            <div class="overview-card-icon">
+              <!-- Checkmark Icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="overview-card-text">
+              {{ course.course_overview|default:"Self-development, communication, leadership, and execution." }}
+            </div>
+          </div>
+
+          <!-- Why Take This Course? -->
+          <h3 class="overview-section-title">Why Take This Course?</h3>
+          <div class="overview-card">
+            <div class="overview-card-text" style="color: #4b5563;">
+              Leadership styles & mindset &nbsp;&bull;&nbsp; Decision-making & problem-solving &nbsp;&bull;&nbsp; Team management & motivation &nbsp;&bull;&nbsp; Conflict resolution &nbsp;&bull;&nbsp; Goal setting & execution
+            </div>
+          </div>
+
+          <!-- Who Is This For? -->
+          <h3 class="overview-section-title">Who Is This For?</h3>
+          <div class="overview-card">
+            <div class="overview-card-icon" style="color: #0040e0;">
+              <!-- Users Icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <div class="overview-card-text">
+              Students &nbsp;&bull;&nbsp; Freshers &nbsp;&bull;&nbsp; Aspiring team leaders
+            </div>
+          </div>
+
+          <!-- This Course Includes -->
+          <h3 class="overview-section-title">This Course Includes</h3>
+          <div class="includes-grid">
+            <div class="include-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>{{ course.duration }} total duration</span>
+            </div>
+            <div class="include-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              <span>{{ course.modules_count }} modules</span>
+            </div>
+            <div class="include-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              <span>1 recorded lectures</span>
+            </div>
+            <div class="include-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>1 downloadable notes</span>
+            </div>
+            <div class="include-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.6 11.6L22 18v-6h-6.4zM2 18h11.6L7.2 11.6 2 18z"></path><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path></svg>
+              <span>1 live sessions</span>
+            </div>
+            <div class="include-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-6l-3 9L9 3l-3 9H2"></path></svg>
+              <span>Certificate of completion</span>
+            </div>
+          </div>
+
+          <!-- Your Instructor -->
+          <h3 class="overview-section-title">Your Instructor</h3>
+          <div class="instructor-card-premium">
+            <div class="instructor-avatar-circle">{{ course.instructor_name|slice:":1" }}</div>
+            <div class="instructor-info">
+              <h4 class="instructor-name-header">{{ course.instructor_name }}</h4>
+              <p class="instructor-title-sub">Corporate Trainer & Leadership Expert</p>
+              <p class="instructor-bio-text">{{ course.instructor_name }} is a leadership development professional and specialist trainer dedicated to raising organizational standards.</p>
+            </div>
+          </div>
+
+          {% if course.last_remarks %}
+          <!-- Last Remarks -->
+          <h3 class="overview-section-title">Last Remarks</h3>
+          <div class="overview-card" style="border-left: 4px solid var(--accent-color); background: rgba(0, 64, 224, 0.01);">
+            <div class="overview-card-text" style="font-style: italic; color: #4b5563;">
+              "{{ course.last_remarks }}"
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+
+        <!-- Curriculum Panel -->
+        <div class="tab-panel" id="panel-curriculum">
+          <div class="panel-card">
+            <h3>Course Curriculum</h3>
+            <div class="curriculum-accordion">
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span>Week 1: Self-Awareness & Goal Setting</span>
+                  <span class="module-duration">5 mins</span>
+                </div>
+                <div class="accordion-body">
+                  <p>Week 1: Self-Awareness & Goal Setting Understanding yourself (strengths & weaknesses) Setting SMART goals Creating a personal growth plan</p>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <span>Week 2: Structured Team Delegation</span>
+                  <span class="module-duration">6 mins</span>
+                </div>
+                <div class="accordion-body">
+                  <p>Week 2: Structured Team Delegation. Assess team strength, distribute workloads, and avoid delegation bottlenecks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recorded Lectures Panel -->
+        <div class="tab-panel" id="panel-recorded">
+          <p class="recorded-intro-text">Access all course video lectures organized by modules. Watch at your own pace and review anytime.</p>
+          
+          <!-- Week 1 -->
+          <h3 class="recorded-week-title">Week 1: Self-Awareness & Goal Setting</h3>
+          <div class="recorded-lecture-card">
+            <!-- Thumbnail with overlay play button -->
+            <div class="lecture-thumbnail-wrapper">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=300&q=80" alt="Self-Awareness" class="lecture-thumbnail-img">
+              <div class="thumbnail-play-overlay">
+                <div class="thumbnail-play-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lecture details -->
+            <div class="lecture-main-info">
+              <h4 class="lecture-card-title">Self-Awareness & Goal Setting</h4>
+              <p class="lecture-card-desc">Week 1: Self-Awareness & Goal Setting Understanding yourself (strengths & weaknesses) Setting SMART goals Creating a personal growth plan</p>
+              <div class="lecture-duration-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>5 mins</span>
+              </div>
+            </div>
+
+            <!-- Locked badge -->
+            <div class="locked-status-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Locked</span>
+            </div>
+          </div>
+
+          <!-- Week 2 -->
+          <h3 class="recorded-week-title">Week 2: Structured Team Delegation</h3>
+          <div class="recorded-lecture-card">
+            <div class="lecture-thumbnail-wrapper">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80" alt="Team Delegation" class="lecture-thumbnail-img">
+              <div class="thumbnail-play-overlay">
+                <div class="thumbnail-play-circle">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+            </div>
+            <div class="lecture-main-info">
+              <h4 class="lecture-card-title">Structured Team Delegation</h4>
+              <p class="lecture-card-desc">Week 2: Structured Team Delegation. Assess team strength, distribute workloads, and avoid delegation bottlenecks.</p>
+              <div class="lecture-duration-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>6 mins</span>
+              </div>
+            </div>
+            <div class="locked-status-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Locked</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Classes Panel -->
+        <div class="tab-panel" id="panel-live">
+          <p class="recorded-intro-text">Upcoming live sessions for enrolled students via Google Meet.</p>
+          
+          <div class="recorded-lecture-card">
+            <!-- Thumbnail with overlay camera icon -->
+            <div class="lecture-thumbnail-wrapper">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&q=80" alt="Live Class" class="lecture-thumbnail-img">
+              <div class="thumbnail-play-overlay">
+                <div class="thumbnail-play-circle">
+                  <!-- Video Camera Icon -->
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live class details -->
+            <div class="lecture-main-info">
+              <h4 class="lecture-card-title">Time Management & Productivity</h4>
+              <p class="lecture-card-desc">Time management techniques Daily planning system Avoiding procrastination</p>
+              <div class="lecture-duration-row">
+                <!-- Clock Icon -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>2026-05-01</span>
+              </div>
+            </div>
+
+            <!-- Locked badge -->
+            <div class="locked-status-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Locked</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes Panel -->
+        <div class="tab-panel" id="panel-notes">
+          <p class="notes-intro-text">Downloadable study materials, handbooks, and reference documents for this course.</p>
+          
+          <div class="notes-card-premium">
+            <!-- Custom reddish document icon box -->
+            <div class="notes-icon-wrapper">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+
+            <!-- Notes details content -->
+            <div class="notes-content-area">
+              <h4 class="notes-card-title">Why Leadership Skills Matter in Today’s World</h4>
+              <p class="notes-card-desc">Leadership is no longer limited to managers or CEOs. Today, every student and professional needs leadership skills to grow and succeed.</p>
+              <div class="notes-timestamp">2026-04-30T17:28:33.397Z</div>
+              
+              {% if enrolled %}
+                <!-- Enrolled buttons view -->
+                <div class="notes-buttons-row">
+                  <a href="#" class="btn-notes-outline">
+                    <!-- Download Icon -->
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download
+                  </a>
+                  <a href="#" class="btn-notes-outline">
+                    <!-- External Link Icon -->
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    Click Here
+                  </a>
+                </div>
+              {% else %}
+                <!-- Locked view -->
+                <p class="notes-locked-message">No download or link available.</p>
+                <div class="notes-locked-action">
+                  <!-- Padlock Icon -->
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>Enroll to access notes</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Panel -->
+        <div class="tab-panel" id="panel-reviews">
+          
+          <!-- Rating Breakdown Card -->
+          <div class="reviews-card-premium">
+            <div class="reviews-summary-layout">
+              <!-- Score Box -->
+              <div class="reviews-score-box">
+                <div class="reviews-large-number">4.5</div>
+                <div class="reviews-stars-row">
+                  <!-- 5 Stars -->
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="opacity: 0.3;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div class="reviews-score-label">Course Rating</div>
+              </div>
+
+              <!-- Progress Bars -->
+              <div class="reviews-progress-bars">
+                <div class="review-bar-row">
+                  <span class="review-bar-star-label">5 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #f59e0b;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="review-bar-track"><div class="review-bar-fill" style="width: 0%;"></div></div>
+                  <span class="review-bar-percent">0%</span>
+                </div>
+                <div class="review-bar-row">
+                  <span class="review-bar-star-label">4 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #f59e0b;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="review-bar-track"><div class="review-bar-fill" style="width: 0%;"></div></div>
+                  <span class="review-bar-percent">0%</span>
+                </div>
+                <div class="review-bar-row">
+                  <span class="review-bar-star-label">3 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #f59e0b;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="review-bar-track"><div class="review-bar-fill" style="width: 0%;"></div></div>
+                  <span class="review-bar-percent">0%</span>
+                </div>
+                <div class="review-bar-row">
+                  <span class="review-bar-star-label">2 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #f59e0b;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="review-bar-track"><div class="review-bar-fill" style="width: 0%;"></div></div>
+                  <span class="review-bar-percent">0%</span>
+                </div>
+                <div class="review-bar-row">
+                  <span class="review-bar-star-label">1 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="color: #f59e0b;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+                  <div class="review-bar-track"><div class="review-bar-fill" style="width: 0%;"></div></div>
+                  <span class="review-bar-percent">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leave a Review Form Card -->
+          <div class="reviews-card-premium">
+            <h3 class="leave-review-title">Leave a Review</h3>
+            <div class="interactive-stars-row">
+              <!-- 5 Interactive Stars (SVG) -->
+              <svg class="interactive-star-svg" data-rating="1" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg class="interactive-star-svg" data-rating="2" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg class="interactive-star-svg" data-rating="3" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg class="interactive-star-svg" data-rating="4" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg class="interactive-star-svg" data-rating="5" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
+
+            <textarea class="review-textarea" placeholder="Share your experience with this course..."></textarea>
+            
+            <button class="btn-review-submit">
+              <!-- Paper Plane/Send Icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              Submit Review
+            </button>
+          </div>
+
+          <!-- Empty Reviews List Card -->
+          <div class="reviews-card-premium">
+            <div class="no-reviews-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #cbd5e1; margin-bottom: 1rem;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <p style="margin: 0; font-size: 0.95rem; font-weight: 500; color: #6b7280;">No reviews yet. Be the first to review!</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive JavaScript for Tabs & Star Ratings -->
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active state from all buttons and panels
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+
+        // Add active state to clicked button
+        button.classList.add('active');
+        
+        // Show target panel
+        const targetTab = button.getAttribute('data-tab');
+        document.getElementById(`panel-${targetTab}`).classList.add('active');
+      });
+    });
+
+    // Interactive Star Rating Logic
+    const stars = document.querySelectorAll('.interactive-star-svg');
+    stars.forEach(star => {
+      star.addEventListener('mouseover', () => {
+        const rating = parseInt(star.getAttribute('data-rating'));
+        stars.forEach(s => {
+          if (parseInt(s.getAttribute('data-rating')) <= rating) {
+            s.classList.add('hovered');
+          } else {
+            s.classList.remove('hovered');
+          }
+        });
+      });
+
+      star.addEventListener('mouseout', () => {
+        stars.forEach(s => s.classList.remove('hovered'));
+      });
+
+      star.addEventListener('click', () => {
+        const rating = parseInt(star.getAttribute('data-rating'));
+        stars.forEach(s => {
+          if (parseInt(s.getAttribute('data-rating')) <= rating) {
+            s.classList.add('selected');
+          } else {
+            s.classList.remove('selected');
+          }
+        });
+      });
+    });
+
+    // Courses Dropdown Toggle on Mobile
+    const dropdownToggle = document.getElementById('courses-dropdown-toggle');
+    const navItemDropdown = dropdownToggle.closest('.nav-item.dropdown');
+    dropdownToggle.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        navItemDropdown.classList.toggle('active');
+      }
+    });
+  </script>
+
+  <!-- Premium Footer -->
+  <footer style="background-color: #000a26; border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 4rem 2rem; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+      <div>
+        <h3 style="color: var(--white); margin: 0 0 1rem 0;">FutureStack</h3>
+        <p style="max-width: 300px; line-height: 1.6;">Integrating talent, thought and action. A premier space to elevate your personal and leadership capabilities.</p>
+      </div>
+      <div>
+        <p>&copy; 2026 FutureStack. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

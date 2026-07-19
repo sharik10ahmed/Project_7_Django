@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Email - FutureStack</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{% static 'style.css' %}?v=1.25">
+  <!-- Favicon for all devices -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+  <style>
+    /* Premium Glassmorphism styling specifically for OTP container/input */
+    .otp-input-container {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    
+    .otp-field {
+      width: 100%;
+      max-width: 280px;
+      letter-spacing: 1.5rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 800;
+      padding: 0.8rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(0, 64, 224, 0.15);
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    
+    .otp-field:focus {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 15px rgba(0, 64, 224, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.02);
+      outline: none;
+    }
+
+    .otp-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .email-highlight {
+      color: var(--primary-color);
+      font-weight: 600;
+      background: rgba(0, 64, 224, 0.06);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+
+    .otp-btn {
+      width: 100%;
+      padding: 0.85rem;
+      font-size: 1rem;
+      border-radius: 12px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      color: var(--white);
+      border: none;
+      box-shadow: 0 6px 20px rgba(0, 64, 224, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .otp-btn:hover {
+      box-shadow: 0 8px 25px rgba(0, 64, 224, 0.35);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="auth-page-body">
+
+  <!-- Premium Header -->
+  <header class="header" id="header">
+    <nav class="navbar">
+      
+      <!-- Brand & Logo -->
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="logo-img">
+        <div class="brand-text">
+          <span class="brand-title">FutureStack</span>
+          <span class="brand-subtitle">Integrating talent, thought and action.</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item">
+          <a href="{% url 'home' %}" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'about' %}" class="nav-link">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link" id="courses-dropdown-toggle">
+            Courses
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'articles' %}" class="nav-link">Articles</a>
+        </li>
+      </ul>
+
+      <!-- Auth Actions -->
+      <div class="nav-actions" id="nav-actions">
+        <a href="{% url 'login' %}" class="btn btn-link">Sign In</a>
+        <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <div class="auth-wrapper">
+    
+    <!-- Left Sidebar (Split Screen Brand View) -->
+    <div class="auth-sidebar">
+      <a href="{% url 'home' %}" class="auth-sidebar-brand">
+        <img src="{% static 'logo.png' %}" alt="FutureStack Logo" class="logo-img">
+        <span class="auth-sidebar-title">FutureStack</span>
+      </a>
+      
+      <div class="auth-sidebar-content">
+        <h2>Verify Your Evolution.</h2>
+        <p>Security and trust are at the center of FutureStack. Verify your email address to unlock custom learning paths, live modules, and profile personalization.</p>
+      </div>
+      
+      <div class="auth-sidebar-footer">
+        &copy; 2026 FutureStack. All rights reserved.
+      </div>
+    </div>
+
+    <!-- Right Side (OTP Verification Form View) -->
+    <div class="auth-form-container">
+      <div class="auth-card" style="background: rgba(255, 255, 255, 0.45); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 20px 40px rgba(0, 16, 64, 0.05);">
+        
+        <div class="auth-header">
+          <h1>Verify your email</h1>
+          <p class="otp-desc">We have sent a 6-digit security code to <span class="email-highlight">{{ email }}</span>. Please check your inbox and enter it below.</p>
+        </div>
+
+        {% if messages %}
+        <div class="messages" style="margin-bottom: 1.5rem;">
+          {% for message in messages %}
+          <div class="message {{ message.tags }}" style="padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.88rem; font-weight: 500; margin-bottom: 0.5rem; background-color: {% if message.tags == 'error' %}#fee2e2{% else %}#dcfce7{% endif %}; color: {% if message.tags == 'error' %}#b91c1c{% else %}#15803d{% endif %}; border: 1px solid {% if message.tags == 'error' %}#fca5a5{% else %}#86efac{% endif %};">
+            {{ message }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <form id="otp-form" method="POST" action="{% url 'otp_verify' %}">
+          {% csrf_token %}
+          
+          <div class="otp-input-container">
+            <input type="text" id="otp" name="otp" class="otp-field" placeholder="------" maxlength="6" pattern="\d{6}" required autocomplete="one-time-code" autofocus>
+          </div>
+
+          <button type="submit" class="otp-btn">Verify & Create Account</button>
+        </form>
+
+        <div class="auth-footer" style="margin-top: 2rem; text-align: center;">
+          <p>Didn't receive the email? <a href="{% url 'register' %}">Try registering again</a></p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Ensure only digits can be entered and center the text nicely
+    const otpInput = document.getElementById('otp');
+    otpInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/\D/g, '');
+    });
+  </script>
+</body>
+</html>

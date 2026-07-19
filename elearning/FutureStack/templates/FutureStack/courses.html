@@ -538,9 +538,11 @@
             </div>
           </div>
         </li>
+        {% if not user.is_authenticated %}
         <li class="nav-item">
           <a href="{% url 'live_classes' %}" class="nav-link">Live Classes</a>
         </li>
+        {% endif %}
         <li class="nav-item">
           <a href="{% url 'articles' %}" class="nav-link">Articles</a>
         </li>
@@ -673,34 +675,37 @@
       <!-- Course Cards Grid -->
       <div class="courses-catalog-grid">
         
-        <!-- Card 1 -->
+        <!-- Dynamic Course Cards -->
+        {% for course in courses %}
         <div class="course-card-premium">
           <div class="card-banner-wrapper">
-            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Leadership Mastery" class="card-banner-img">
-            <span class="discount-badge-glass">33% OFF</span>
+            <img src="{% if course.banner_image %}{{ course.banner_image.url }}{% else %}{{ course.banner_image_url }}{% endif %}" alt="{{ course.title }}" class="card-banner-img">
+            {% if course.discount_percentage > 0 %}
+            <span class="discount-badge-glass">{{ course.discount_percentage }}% OFF</span>
+            {% endif %}
           </div>
           <div class="card-body-content">
             <div class="card-tags-row">
-              <span class="card-tag-category">Leadership and Personal Development</span>
-              <span class="card-tag-level">Advanced</span>
+              <span class="card-tag-category">{{ course.category }}</span>
+              <span class="card-tag-level">{{ course.level }}</span>
             </div>
-            <h3 class="card-title-serif">Leadership Mastery for Young Professionals</h3>
+            <h3 class="card-title-serif">{{ course.title }}</h3>
             <p class="card-desc-text">
-              Learn how to become a confident leader, make smart decisions, and manage teams effectively. This course focuses on real-world leadership.
+              {{ course.description }}
             </p>
             
             <div class="card-meta-grid">
               <div class="meta-item-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                6 Weeks
+                {{ course.duration }}
               </div>
               <div class="meta-item-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                6 Modules
+                {{ course.modules_count }} Modules
               </div>
               <div class="meta-item-spec">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-                5 Enrolled
+                {{ course.students_count }} Enrolled
               </div>
               <div class="meta-item-spec rating">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
@@ -710,127 +715,24 @@
 
             <div class="card-price-instructor-row">
               <div class="card-price-box">
-                <span class="card-price-original">₹15,000</span>
-                <span class="card-price-current">₹10,000</span>
+                <span class="card-price-original">₹{{ course.original_price|floatformat:"0" }}</span>
+                <span class="card-price-current">₹{{ course.payable_amount|floatformat:"0" }}</span>
               </div>
               <div class="card-instructor-box">
                 <span class="card-instructor-label">Instructor</span>
-                <span class="card-instructor-name">Lt Col Shreesh Kumar (Retd)</span>
+                <span class="card-instructor-name">{{ course.instructor_name }}</span>
               </div>
             </div>
 
             <div class="card-actions-grid">
               <a href="#" class="btn-card-enroll">Enroll Now</a>
-              <a href="#" class="btn-card-view-outline">View Course</a>
+              <a href="{% url 'course_detail' course.id %}" class="btn-card-view-outline">View Course</a>
             </div>
           </div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="course-card-premium">
-          <div class="card-banner-wrapper">
-            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80" alt="Personal Growth" class="card-banner-img">
-            <span class="discount-badge-glass">20% OFF</span>
-          </div>
-          <div class="card-body-content">
-            <div class="card-tags-row">
-              <span class="card-tag-category">Communication & Corporate</span>
-              <span class="card-tag-level">Advanced</span>
-            </div>
-            <h3 class="card-title-serif">Personal Growth & Self-Development Bootcamp</h3>
-            <p class="card-desc-text">
-              This course helps you improve your mindset, discipline, and daily habits to break barriers and become your best version.
-            </p>
-            
-            <div class="card-meta-grid">
-              <div class="meta-item-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                4 Weeks
-              </div>
-              <div class="meta-item-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                6 Modules
-              </div>
-              <div class="meta-item-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-                5 Enrolled
-              </div>
-              <div class="meta-item-spec rating">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                4.5
-              </div>
-            </div>
-
-            <div class="card-price-instructor-row">
-              <div class="card-price-box">
-                <span class="card-price-original">₹4,999</span>
-                <span class="card-price-current">₹3,999</span>
-              </div>
-              <div class="card-instructor-box">
-                <span class="card-instructor-label">Instructor</span>
-                <span class="card-instructor-name">Lt Col Shreesh Kumar (Retd)</span>
-              </div>
-            </div>
-
-            <div class="card-actions-grid">
-              <a href="#" class="btn-card-enroll">Enroll Now</a>
-              <a href="#" class="btn-card-view-outline">View Course</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="course-card-premium">
-          <div class="card-banner-wrapper">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Personality Development" class="card-banner-img">
-            <span class="discount-badge-glass">29% OFF</span>
-          </div>
-          <div class="card-body-content">
-            <div class="card-tags-row">
-              <span class="card-tag-category">Leadership and Personal Development</span>
-              <span class="card-tag-level">Advanced</span>
-            </div>
-            <h3 class="card-title-serif">Personality Development Program</h3>
-            <p class="card-desc-text">
-              Equip yourself with elite interpersonal dynamics, presentation skills, self-awareness, and values to project a standout professional brand.
-            </p>
-            
-            <div class="card-meta-grid">
-              <div class="meta-item-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                8 Weeks
-              </div>
-              <div class="meta-item-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-                6 Modules
-              </div>
-              <div class="meta-item-spec">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-                5 Enrolled
-              </div>
-              <div class="meta-item-spec rating">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                4.5
-              </div>
-            </div>
-
-            <div class="card-price-instructor-row">
-              <div class="card-price-box">
-                <span class="card-price-original">₹6,999</span>
-                <span class="card-price-current">₹5,000</span>
-              </div>
-              <div class="card-instructor-box">
-                <span class="card-instructor-label">Instructor</span>
-                <span class="card-instructor-name">Lt Col Shreesh Kumar (Retd)</span>
-              </div>
-            </div>
-
-            <div class="card-actions-grid">
-              <a href="#" class="btn-card-enroll">Enroll Now</a>
-              <a href="#" class="btn-card-view-outline">View Course</a>
-            </div>
-          </div>
-        </div>
+        {% empty %}
+        <p style="color: var(--text-muted); font-size: 1.1rem; grid-column: 1 / -1; text-align: center; padding: 3rem 0;">No courses available at the moment. Check back soon!</p>
+        {% endfor %}
 
       </div>
     </div>

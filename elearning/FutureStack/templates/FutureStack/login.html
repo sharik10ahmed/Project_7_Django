@@ -131,9 +131,11 @@
             </div>
           </div>
         </li>
+        {% if not user.is_authenticated %}
         <li class="nav-item">
           <a href="#" class="nav-link">Live Classes</a>
         </li>
+        {% endif %}
         <li class="nav-item">
           <a href="#" class="nav-link">Articles</a>
         </li>
