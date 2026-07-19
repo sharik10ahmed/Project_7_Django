@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from FutureStack.views import home, login_view, register_view, about_view, courses_view, live_classes_view, articles_view
+from FutureStack.views import home, login_view, register_view, about_view, courses_view, live_classes_view, articles_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('login/', login_view, name='login'),
     path('register/', register_view, name='register'),
+    path('logout/', logout_view, name='logout'),
     path('about/', about_view, name='about'),
     path('courses/', courses_view, name='courses'),
     path('live/', live_classes_view, name='live_classes'),

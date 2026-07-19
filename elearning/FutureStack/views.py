@@ -70,3 +70,9 @@ def live_classes_view(request):
 
 def articles_view(request):
     return render(request, 'FutureStack/articles.html')
+
+def logout_view(request):
+    auth_logout(request)
+    messages.success(request, "You have been logged out successfully.")
+    return redirect('home')
+
