@@ -1,7 +1,7 @@
 <div align="center">
 
   <!-- Animated Typing Banner -->
-  <a href="https://github.com/shariksosync/FutureStack">
+  <a href="https://github.com/sharik10ahmed/Project_7_Django">
     <img src="https://readme-typing-svg.demolab.com?font=Plus+Jakarta+Sans&weight=800&size=34&duration=3000&pause=1000&color=0055FF&center=true&vCenter=true&multiline=false&width=750&height=70&lines=FutureStack%3A+E-Learning+Ecosystem;Integrating+Talent%2C+Thought+%26+Action;Built+with+Django+6.0+%2B+Vanilla+CSS;Secure+OTP+Authentication+%2B+Live+Hub" alt="Typing SVG Banner" />
   </a>
 
@@ -242,8 +242,8 @@ Follow these concise steps to set up FutureStack locally in under 2 minutes:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/shariksosync/FutureStack.git
-cd FutureStack/elearning
+git clone https://github.com/sharik10ahmed/Project_7_Django.git
+cd Project_7_Django/elearning
 ```
 
 ### 2️⃣ Initialize Virtual Environment
@@ -410,11 +410,11 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more informa
 
 <div align="center">
   <h3>Crafted with passion by <strong>Sharik Ahmed</strong></h3>
-  <p>Full-Stack Developer & Software Craftsman</p>
+  <p>Full-Stack Developer & Software Craftsman | Personal Portfolio Project</p>
   
   <p>
     <a href="mailto:sharikahmed757@gmail.com"><img src="https://img.shields.io/badge/Email-sharikahmed757%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
-    <a href="https://github.com/shariksosync"><img src="https://img.shields.io/badge/GitHub-shariksosync-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+    <a href="https://github.com/sharik10ahmed"><img src="https://img.shields.io/badge/GitHub-sharik10ahmed-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
   </p>
 
   <br />
