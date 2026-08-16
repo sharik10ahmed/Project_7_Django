@@ -125,24 +125,24 @@ FutureStack leverages Django's robust Model-View-Template (MVT) paradigm with an
 ```mermaid
 flowchart TD
     subgraph Client ["🖥️ Client / Browser"]
-        A[User Browser] -->|HTTP GET/POST| B(Django URL Router)
+        A["User Browser"] -->|HTTP GET/POST| B["Django URL Router"]
     end
 
     subgraph Backend ["⚙️ Django 6.0 Core Engine"]
-        B --> C{View Controller}
-        C -->|Register & Validate| D[Session Staging Layer]
-        D -->|Generate OTP| E[OTP Security Engine]
-        E -->|HTML Email Template| F[SMTP Email Service (Gmail/TLS)]
+        B --> C{"View Controller"}
+        C -->|Register & Validate| D["Session Staging Layer"]
+        D -->|Generate OTP| E["OTP Security Engine"]
+        E -->|HTML Email Template| F["SMTP Email Service (Gmail / TLS)"]
         
-        C -->|Verify OTP & Commit| G[(SQLite Database / ORM)]
+        C -->|Verify OTP & Commit| G[("SQLite Database / ORM")]
         C -->|Query Catalog| G
         
-        G -->|Model Dataset| H[Course & User Models]
-        H -->|Context Data| I[Django Template Engine]
+        G -->|Model Dataset| H["Course & User Models"]
+        H -->|Context Data| I["Django Template Engine"]
     end
 
     subgraph Frontend ["🎨 Responsive View Engine"]
-        I --> J[HTML5 + CSS Tokens + ES6 JS]
+        I --> J["HTML5 + CSS Tokens + ES6 JS"]
         J -->|Render View| A
     end
 ```
